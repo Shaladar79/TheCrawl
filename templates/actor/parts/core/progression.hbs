@@ -1,0 +1,19 @@
+{{#if (or isPC isNPC)}}
+<fieldset style="margin:10px 0; padding:10px;">
+  <legend>Progression</legend>
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+    <label>
+      Tier
+      <input type="text" name="system.progression.tier" value="{{system.progression.tier}}" />
+    </label>
+    <label>
+      Spirit
+      <div style="display:flex; gap:6px; align-items:center;">
+        <input type="number" name="system.progression.spirit.value" value="{{system.progression.spirit.value}}" style="width:90px;" />
+        <span>/</span>
+        <input type="number" name="system.progression.spirit.max" value="{{system.progression.spirit.max}}" style="width:90px;" />
+      </div>
+    </label>
+  </div>
+</fieldset>
+{{/if}}
