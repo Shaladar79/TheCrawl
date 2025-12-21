@@ -16,35 +16,35 @@
         },
 
         "attributes": {
-          "level": 1,
-          "rank": "",
-          "xp": { "value": 0, "max": 0 },
-
-          "defense": { "value": 0 },
-          "initiative": { "value": 0 },
-          "speed": { "value": 0 },
-
-          "senses": {
-            "perception": { "value": 0 }
-          }
+          "might": { "value": 0 },
+          "agility": { "value": 0 },
+          "endurance": { "value": 0 },
+          "insight": { "value": 0 },
+          "willpower": { "value": 0 },
+          "charisma": { "value": 0 }
         },
 
         "resources": {
-          "hp": { "value": 0, "max": 0 },
-          "mana": { "value": 0, "max": 0 },
-          "stamina": { "value": 0, "max": 0 }
+          "vitality": { "value": 0, "max": 0 },
+          "stamina": { "value": 0, "max": 0 },
+          "mana": { "value": 0, "max": 0 }
+        },
+
+        "derived": {
+          "defense": { "value": 0 },
+          "initiative": { "value": 0 },
+          "speed": { "value": 0 }
         },
 
         "combat": {
           "wounds": { "value": 0, "max": 0 },
           "armor": { "value": 0 },
           "shielding": { "value": 0 },
+
           "resistances": {},
           "immunities": {},
           "vulnerabilities": {}
         },
-
-        "skills": {},
 
         "notes": {
           "public": "",
@@ -55,13 +55,12 @@
       "pc": {
         "details": {
           "background": "",
-          "species": "",
-          "class": ""
+          "species": ""
         },
 
         "progression": {
-          "advancements": 0,
-          "spent": 0
+          "tier": "novice",
+          "spirit": { "value": 0, "max": 0 }
         },
 
         "currency": {}
@@ -74,8 +73,7 @@
         },
 
         "progression": {
-          "advancements": 0,
-          "spent": 0
+          "tier": "novice"
         }
       },
 
@@ -118,25 +116,15 @@
       }
     },
 
-    "pc": {
-      "templates": ["base", "pc"]
-    },
-    "npc": {
-      "templates": ["base", "npc"]
-    },
-    "monster": {
-      "templates": ["base", "monster"]
-    },
-    "companion": {
-      "templates": ["base", "companion"]
-    },
-    "summon": {
-      "templates": ["base", "summon"]
-    }
+    "pc": { "templates": ["base", "pc"] },
+    "npc": { "templates": ["base", "npc"] },
+    "monster": { "templates": ["base", "monster"] },
+    "companion": { "templates": ["base", "companion"] },
+    "summon": { "templates": ["base", "summon"] }
   },
 
   "Item": {
-    "types": ["ability", "equipment", "feature"],
+    "types": ["skill", "equipment"],
     "templates": {
       "base": {
         "description": "",
@@ -144,42 +132,66 @@
         "tags": []
       },
 
-      "ability": {
+      "skill": {
+        "key": "",
+        "category": "general",
+        "governingAttribute": "might",
+
+        "rank": 0,
+        "trained": false,
+
         "action": {
           "type": "passive",
           "cost": 0
         },
+
         "costs": {
-          "hp": 0,
-          "mana": 0,
-          "stamina": 0
+          "vitality": 0,
+          "stamina": 0,
+          "mana": 0
         },
+
         "scaling": {
           "mode": "none",
           "perRank": 0
+        },
+
+        "bonus": {
+          "misc": 0
         }
       },
 
       "equipment": {
+        "category": "misc",
         "equipped": false,
-        "slot": "",
-        "bonuses": {}
-      },
+        "quantity": 1,
 
-      "feature": {
-        "enabled": true
+        "slot": "",
+        "stackable": false,
+
+        "bonuses": {},
+
+        "weapon": {
+          "damage": "",
+          "range": "",
+          "properties": []
+        },
+
+        "armor": {
+          "armorValue": 0,
+          "properties": []
+        },
+
+        "consumable": {
+          "uses": { "value": 0, "max": 0 },
+          "effect": ""
+        }
       }
     },
 
-    "ability": {
-      "templates": ["base", "ability"]
-    },
-    "equipment": {
-      "templates": ["base", "equipment"]
-    },
-    "feature": {
-      "templates": ["base", "feature"]
-    }
+    "skill": { "templates": ["base", "skill"] },
+    "equipment": { "templates": ["base", "equipment"] }
   }
 }
+
 
