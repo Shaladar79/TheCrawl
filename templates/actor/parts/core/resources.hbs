@@ -1,0 +1,31 @@
+<fieldset style="margin:10px 0; padding:10px;">
+  <legend>Resources</legend>
+  <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:10px;">
+    <label>
+      Vitality
+      <div style="display:flex; gap:6px; align-items:center;">
+        <input type="number" name="system.resources.vitality.value" value="{{system.resources.vitality.value}}" style="width:90px;" />
+        <span>/</span>
+        <input type="number" name="system.resources.vitality.max" value="{{system.resources.vitality.max}}" style="width:90px;" />
+      </div>
+    </label>
+
+    <label>
+      Stamina
+      <div style="display:flex; gap:6px; align-items:center;">
+        <input type="number" name="system.resources.stamina.value" value="{{system.resources.stamina.value}}" style="width:90px;" />
+        <span>/</span>
+        <input type="number" name="system.resources.stamina.max" value="{{system.resources.stamina.max}}" style="width:90px;" />
+      </div>
+    </label>
+
+    <label>
+      Mana
+      <div style="display:flex; gap:6px; align-items:center;">
+        <input type="number" name="system.resources.mana.value" value="{{system.resources.mana.value}}" style="width:90px;" />
+        <span>/</span>
+        <input type="number" name="system.resources.mana.max" value="{{system.resources.mana.max}}" style="width:90px;" />
+      </div>
+    </label>
+  </div>
+</fieldset>
