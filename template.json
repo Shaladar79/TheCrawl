@@ -8,13 +8,11 @@
           "faction": "",
           "tags": []
         },
-
         "meta": {
           "sheetMode": "auto",
           "isMinion": false,
           "isSummoned": false
         },
-
         "attributes": {
           "might": { "value": 0 },
           "agility": { "value": 0 },
@@ -23,193 +21,113 @@
           "willpower": { "value": 0 },
           "charisma": { "value": 0 }
         },
-
         "resources": {
           "vitality": { "value": 0, "max": 0 },
           "stamina": { "value": 0, "max": 0 },
           "mana": { "value": 0, "max": 0 }
         },
-
         "derived": {
           "defense": { "value": 0 },
           "initiative": { "value": 0 },
           "speed": { "value": 0 }
         },
-
         "combat": {
           "wounds": { "value": 0, "max": 0 },
           "armor": { "value": 0 },
           "shielding": { "value": 0 },
-
           "resistances": {},
           "immunities": {},
           "vulnerabilities": {}
         },
-
         "notes": {
           "public": "",
           "gm": ""
         }
       },
-
       "pc": {
         "details": {
           "background": "",
           "species": ""
         },
-
         "progression": {
           "tier": "novice",
           "spirit": { "value": 0, "max": 0 }
         },
-
         "currency": {}
       },
-
       "npc": {
         "details": {
           "role": "",
           "disposition": "neutral"
         },
-
         "progression": {
           "tier": "novice"
         }
       },
-
       "monster": {
         "details": {
           "category": "",
           "threat": ""
         },
-
         "meta": {
           "sheetMode": "combat"
         },
-
         "combat": {
           "lair": false,
           "boss": false
         }
       },
-
       "companion": {
         "details": {
           "owner": ""
         },
-
         "meta": {
           "sheetMode": "ally"
         }
       },
-
       "summon": {
         "details": {
           "summoner": "",
           "duration": ""
         },
-
         "meta": {
           "isSummoned": true,
           "sheetMode": "minion"
         }
       }
     },
-
     "pc": { "templates": ["base", "pc"] },
     "npc": { "templates": ["base", "npc"] },
     "monster": { "templates": ["base", "monster"] },
     "companion": { "templates": ["base", "companion"] },
     "summon": { "templates": ["base", "summon"] }
   },
-
   "Item": {
-  "types": ["skill", "talent", "race", "equipment"],
-
-  "templates": {
-    "base": {
-      "description": "",
-      "source": "",
-      "tags": []
-    },
-
-    "skill": {
-      "key": "",
-      "category": "skill",
-      "governingAttribute": "might",
-      "tier": 0,
-      "trained": false,
-      "bonus": { "misc": 0 }
-    },
-
-    "talent": {
-      "key": "",
-      "category": "talent",
-      "governingAttribute": "might",
-      "tier": 0,
-
-      "action": {
-        "type": "passive",
-        "cost": 0
+    "types": ["skill", "talent", "race", "equipment"],
+    "templates": {
+      "base": {
+        "description": "",
+        "source": "",
+        "tags": []
       },
-
-      "costs": {
-        "vitality": 0,
-        "stamina": 0,
-        "mana": 0
+      "skill": {
+        "key": "",
+        "category": "skill",
+        "governingAttribute": "might",
+        "tier": 0,
+        "trained": false,
+        "bonus": { "misc": 0 }
       },
-
-      "scaling": {
-        "mode": "none",
-        "perTier": 0
-      },
-
-      "bonus": { "misc": 0 }
-    },
-
-    "race": {
-      "key": "",
-      "category": "race",
-
-      "traits": [],
-      "bonuses": {},
-      "grants": {
-        "attributes": {},
-        "talents": [],
-        "skills": []
-      }
-    },
-
-    "equipment": {
-      "category": "misc",
-      "equipped": false,
-      "quantity": 1,
-      "slot": "",
-      "stackable": false,
-
-      "bonuses": {},
-
-      "weapon": {
-        "damage": "",
-        "range": "",
-        "properties": []
-      },
-
-      "armor": {
-        "armorValue": 0,
-        "properties": []
-      },
-
-      "consumable": {
-        "uses": { "value": 0, "max": 0 },
-        "effect": ""
-      }
-    }
-  },
-
- "skill": { "templates": ["base", "skill"] },
-"talent": { "templates": ["base", "talent"] },
-"race": { "templates": ["base", "race"] },
-"equipment": { "templates": ["base", "equipment"] }
-}
-}
+      "talent": {
+        "key": "",
+        "category": "talent",
+        "governingAttribute": "might",
+        "tier": 0,
+        "action": {
+          "type": "passive",
+          "cost": 0
+        },
+        "costs": {
+          "vitality": 0,
+          "stamina": 0,
+          "mana": 0
