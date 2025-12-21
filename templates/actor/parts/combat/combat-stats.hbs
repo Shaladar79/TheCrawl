@@ -1,0 +1,17 @@
+<fieldset style="margin:10px 0; padding:10px;">
+  <legend>Combat</legend>
+
+  <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:10px;">
+    <label>
+      Wounds
+      <div style="display:flex; gap:6px; align-items:center;">
+        <input type="number" name="system.combat.wounds.value" value="{{system.combat.wounds.value}}" style="width:90px;" />
+        <span>/</span>
+        <input type="number" name="system.combat.wounds.max" value="{{system.combat.wounds.max}}" style="width:90px;" />
+      </div>
+    </label>
+
+    <label>Armor <input type="number" name="system.combat.armor.value" value="{{system.combat.armor.value}}" /></label>
+    <label>Shielding <input type="number" name="system.combat.shielding.value" value="{{system.combat.shielding.value}}" /></label>
+  </div>
+</fieldset>
