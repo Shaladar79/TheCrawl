@@ -207,9 +207,9 @@
     }
   },
 
-  "skill": { "templates": ["base", "skill"] },
-  "talent": { "templates": ["base", "talent"] },
-  "race": { "templates": ["base", "race"] },
-  "equipment": { "templates": ["base", "equipment"] }
+ "skill": { "templates": ["base", "skill"] },
+"talent": { "templates": ["base", "talent"] },
+"race": { "templates": ["base", "race"] },
+"equipment": { "templates": ["base", "equipment"] }
 }
 }
