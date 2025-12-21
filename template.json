@@ -124,74 +124,91 @@
   },
 
   "Item": {
-    "types": ["skill", "equipment"],
-    "templates": {
-      "base": {
-        "description": "",
-        "source": "",
-        "tags": []
+  "types": ["skill", "talent", "race", "equipment"],
+
+  "templates": {
+    "base": {
+      "description": "",
+      "source": "",
+      "tags": []
+    },
+
+    "skill": {
+      "key": "",
+      "category": "skill",
+      "governingAttribute": "might",
+      "tier": 0,
+      "trained": false,
+      "bonus": { "misc": 0 }
+    },
+
+    "talent": {
+      "key": "",
+      "category": "talent",
+      "governingAttribute": "might",
+      "tier": 0,
+
+      "action": {
+        "type": "passive",
+        "cost": 0
       },
 
-      "skill": {
-        "key": "",
-        "category": "general",
-        "governingAttribute": "might",
-
-        "tier": 0,
-        "trained": false,
-
-        "action": {
-          "type": "passive",
-          "cost": 0
-        },
-
-        "costs": {
-          "vitality": 0,
-          "stamina": 0,
-          "mana": 0
-        },
-
-        "scaling": {
-          "mode": "none",
-          "perRank": 0
-        },
-
-        "bonus": {
-          "misc": 0
-        }
+      "costs": {
+        "vitality": 0,
+        "stamina": 0,
+        "mana": 0
       },
 
-      "equipment": {
-        "category": "misc",
-        "equipped": false,
-        "quantity": 1,
+      "scaling": {
+        "mode": "none",
+        "perTier": 0
+      },
 
-        "slot": "",
-        "stackable": false,
+      "bonus": { "misc": 0 }
+    },
 
-        "bonuses": {},
+    "race": {
+      "key": "",
+      "category": "race",
 
-        "weapon": {
-          "damage": "",
-          "range": "",
-          "properties": []
-        },
-
-        "armor": {
-          "armorValue": 0,
-          "properties": []
-        },
-
-        "consumable": {
-          "uses": { "value": 0, "max": 0 },
-          "effect": ""
-        }
+      "traits": [],
+      "bonuses": {},
+      "grants": {
+        "attributes": {},
+        "talents": [],
+        "skills": []
       }
     },
 
-    "skill": { "templates": ["base", "skill"] },
-    "equipment": { "templates": ["base", "equipment"] }
-  }
+    "equipment": {
+      "category": "misc",
+      "equipped": false,
+      "quantity": 1,
+      "slot": "",
+      "stackable": false,
+
+      "bonuses": {},
+
+      "weapon": {
+        "damage": "",
+        "range": "",
+        "properties": []
+      },
+
+      "armor": {
+        "armorValue": 0,
+        "properties": []
+      },
+
+      "consumable": {
+        "uses": { "value": 0, "max": 0 },
+        "effect": ""
+      }
+    }
+  },
+
+  "skill": { "templates": ["base", "skill"] },
+  "talent": { "templates": ["base", "talent"] },
+  "race": { "templates": ["base", "race"] },
+  "equipment": { "templates": ["base", "equipment"] }
 }
-
-
