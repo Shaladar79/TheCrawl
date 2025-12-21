@@ -5,21 +5,20 @@ export class TheCrawlSkillSheet extends ItemSheet {
       classes: ["thecrawl", "sheet", "item", "skill"],
       width: 620,
       height: 720,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "details" }]
+      tabs: [
+        { navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "details" }
+      ]
     });
   }
 
   get template() {
-    // IMPORTANT: your folder is templates/items (plural)
     return "systems/thecrawl/templates/items/skill-sheet.hbs";
   }
 
   async getData(options = {}) {
     const data = await super.getData(options);
-
     data.attributeOptions = ["might", "agility", "endurance", "insight", "willpower", "charisma"];
     data.itemLabel = "Skill";
-
     return data;
   }
 }
