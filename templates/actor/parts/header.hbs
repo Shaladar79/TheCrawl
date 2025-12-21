@@ -1,0 +1,22 @@
+<header class="sheet-header">
+  <div style="display:flex; gap:12px; align-items:center;">
+    <h1 style="flex:1; margin:0;">
+      <input name="name" type="text" value="{{actor.name}}" placeholder="Name" />
+    </h1>
+
+    <div style="min-width:220px;">
+      <div style="font-size:12px; opacity:0.85;">Actor Type</div>
+      <div style="font-weight:700;">{{actor.type}}</div>
+    </div>
+
+    <div style="min-width:220px;">
+      <div style="font-size:12px; opacity:0.85;">Sheet Mode</div>
+      <select name="system.meta.sheetMode">
+        <option value="auto"  {{#if (eq system.meta.sheetMode "auto")}}selected{{/if}}>Auto</option>
+        <option value="combat" {{#if (eq system.meta.sheetMode "combat")}}selected{{/if}}>Combat</option>
+        <option value="ally"  {{#if (eq system.meta.sheetMode "ally")}}selected{{/if}}>Ally</option>
+        <option value="minion" {{#if (eq system.meta.sheetMode "minion")}}selected{{/if}}>Minion</option>
+      </select>
+    </div>
+  </div>
+</header>
