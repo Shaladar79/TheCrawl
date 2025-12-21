@@ -212,3 +212,4 @@
   "race": { "templates": ["base", "race"] },
   "equipment": { "templates": ["base", "equipment"] }
 }
+}
