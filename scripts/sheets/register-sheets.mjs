@@ -1,4 +1,5 @@
 // scripts/sheets/register-sheets.mjs
+
 import { TheCrawlActorSheet } from "./actor-sheet.mjs";
 
 // Item sheets
@@ -8,27 +9,31 @@ import { TheCrawlRaceSheet } from "./race-sheet.mjs";
 import { TheCrawlEquipmentSheet } from "./equipment-sheet.mjs";
 
 export function registerSheets() {
-  // -----------------------------
-  // Actor sheet
-  // -----------------------------
+
+  /* -------------------------------------------- */
+  /* Actor Sheet                                  */
+  /* -------------------------------------------- */
+
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet("thecrawl", TheCrawlActorSheet, {
     types: ["pc", "npc", "monster", "companion", "summon"],
     makeDefault: true
   });
 
-  // -----------------------------
-  // Item sheets
-  // -----------------------------
+  /* -------------------------------------------- */
+  /* Item Sheets                                  */
+  /* -------------------------------------------- */
+
+  // Explicitly unregister core sheets by type
   Items.unregisterSheet("core", ItemSheet);
 
-  // Skill (mundane skills)
+  // Skill
   Items.registerSheet("thecrawl", TheCrawlSkillSheet, {
     types: ["skill"],
     makeDefault: true
   });
 
-  // Talent (abilities/powers)
+  // Talent
   Items.registerSheet("thecrawl", TheCrawlTalentSheet, {
     types: ["talent"],
     makeDefault: true
@@ -45,6 +50,9 @@ export function registerSheets() {
     types: ["equipment"],
     makeDefault: true
   });
+
+  console.log("The Crawl | Sheets registered");
+}
 
   console.log("The Crawl | Sheets registered");
 }
