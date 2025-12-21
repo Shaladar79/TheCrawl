@@ -1,0 +1,19 @@
+<fieldset style="margin:10px 0; padding:10px;">
+  <legend>Action</legend>
+
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+    <label>
+      Action Type
+      <select name="system.action.type">
+        {{#each actionTypes as |t|}}
+          <option value="{{t}}" {{#if (eq ../system.action.type t)}}selected{{/if}}>{{t}}</option>
+        {{/each}}
+      </select>
+    </label>
+
+    <label>
+      Action Cost
+      <input type="number" name="system.action.cost" value="{{system.action.cost}}" />
+    </label>
+  </div>
+</fieldset>
