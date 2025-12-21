@@ -9,9 +9,9 @@ export class TheCrawlEquipmentSheet extends ItemSheet {
     });
   }
 
-  get template() {
-    return "systems/thecrawl/templates/item/equipment-sheet.hbs";
-  }
+ get template() {
+  return "systems/thecrawl/templates/items/equipment-sheet.hbs";
+}
 
   async getData(options = {}) {
     const data = await super.getData(options);
