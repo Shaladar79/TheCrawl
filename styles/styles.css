@@ -1,0 +1,12 @@
+.thecrawl.actor-sheet input[type="text"],
+.thecrawl.actor-sheet input[type="number"],
+.thecrawl.actor-sheet select,
+.thecrawl.actor-sheet textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.thecrawl.actor-sheet textarea {
+  resize: vertical;
+}
+
