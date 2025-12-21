@@ -36,7 +36,23 @@ export async function preloadHandlebarsTemplates() {
 "systems/thecrawl/templates/items/parts/equipment/weapon.hbs",
 "systems/thecrawl/templates/items/parts/equipment/armor.hbs",
 "systems/thecrawl/templates/items/parts/equipment/consumable.hbs",
-"systems/thecrawl/templates/items/parts/equipment/description.hbs"
+"systems/thecrawl/templates/items/parts/equipment/description.hbs",
+
+    // Talent templates
+"systems/thecrawl/templates/items/talent-sheet.hbs",
+"systems/thecrawl/templates/items/parts/talent/header.hbs",
+"systems/thecrawl/templates/items/parts/talent/details.hbs",
+"systems/thecrawl/templates/items/parts/talent/action.hbs",
+"systems/thecrawl/templates/items/parts/talent/costs.hbs",
+"systems/thecrawl/templates/items/parts/talent/scaling.hbs",
+"systems/thecrawl/templates/items/parts/talent/description.hbs",
+
+// Race templates
+"systems/thecrawl/templates/items/race-sheet.hbs",
+"systems/thecrawl/templates/items/parts/race/header.hbs",
+"systems/thecrawl/templates/items/parts/race/details.hbs",
+"systems/thecrawl/templates/items/parts/race/grants.hbs",
+"systems/thecrawl/templates/items/parts/race/description.hbs"
 
   ];
 
