@@ -1,0 +1,42 @@
+<fieldset style="margin:10px 0; padding:10px;">
+  <legend>Equipment Details</legend>
+
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+    <label>
+      Category
+      <select name="system.category">
+        {{#each equipmentCategories as |c|}}
+          <option value="{{c}}" {{#if (eq ../system.category c)}}selected{{/if}}>{{c}}</option>
+        {{/each}}
+      </select>
+    </label>
+
+    <label style="display:flex; gap:10px; align-items:center; padding-top:22px;">
+      <input type="checkbox" name="system.equipped" {{#if system.equipped}}checked{{/if}} />
+      Equipped
+    </label>
+
+    <label>
+      Quantity
+      <input type="number" name="system.quantity" value="{{system.quantity}}" min="0" />
+    </label>
+
+    <label>
+      Slot
+      <input type="text" name="system.slot" value="{{system.slot}}" placeholder="e.g. mainhand, offhand, head, ring" />
+    </label>
+
+    <label style="display:flex; gap:10px; align-items:center; padding-top:22px;">
+      <input type="checkbox" name="system.stackable" {{#if system.stackable}}checked{{/if}} />
+      Stackable
+    </label>
+  </div>
+</fieldset>
+
+<fieldset style="margin:10px 0; padding:10px;">
+  <legend>Bonuses (JSON for now)</legend>
+  <textarea name="system.bonuses" rows="6">{{json system.bonuses}}</textarea>
+  <p style="opacity:0.75; margin:6px 0 0;">
+    Temporary: this is stored as an object. Later we’ll replace this with structured bonus rows.
+  </p>
+</fieldset>
