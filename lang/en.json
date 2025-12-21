@@ -1,0 +1,30 @@
+{
+  "THECRAWL.SystemName": "The Crawl",
+
+  "THECRAWL.Actor.PC": "PC",
+  "THECRAWL.Actor.NPC": "NPC",
+  "THECRAWL.Actor.Monster": "Monster",
+  "THECRAWL.Actor.Companion": "Companion",
+  "THECRAWL.Actor.Summon": "Summon",
+
+  "THECRAWL.Attributes.Might": "Might",
+  "THECRAWL.Attributes.Agility": "Agility",
+  "THECRAWL.Attributes.Endurance": "Endurance",
+  "THECRAWL.Attributes.Insight": "Insight",
+  "THECRAWL.Attributes.Willpower": "Willpower",
+  "THECRAWL.Attributes.Charisma": "Charisma",
+
+  "THECRAWL.Resources.Vitality": "Vitality",
+  "THECRAWL.Resources.Stamina": "Stamina",
+  "THECRAWL.Resources.Mana": "Mana",
+
+  "THECRAWL.Progression.Tier": "Tier",
+  "THECRAWL.Progression.Spirit": "Spirit",
+  "THECRAWL.Progression.Novice": "Novice",
+
+  "THECRAWL.Item.Skill": "Skill",
+  "THECRAWL.Item.Equipment": "Equipment",
+
+  "THECRAWL.UI.Yes": "Yes",
+  "THECRAWL.UI.No": "No"
+}
