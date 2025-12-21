@@ -1,5 +1,5 @@
 <form class="thecrawl item-sheet equipment-sheet" autocomplete="off">
-  {{> "systems/thecrawl/templates/item/parts/equipment/header.hbs"}}
+  {{> "systems/thecrawl/templates/items/parts/equipment/header.hbs"}}
 
   <nav class="sheet-tabs tabs" data-group="primary" style="margin-top:10px;">
     <a class="item" data-tab="details">Details</a>
@@ -10,20 +10,20 @@
   <section class="sheet-body">
 
     <div class="tab" data-group="primary" data-tab="details">
-      {{> "systems/thecrawl/templates/item/parts/equipment/details.hbs"}}
+      {{> "systems/thecrawl/templates/items/parts/equipment/details.hbs"}}
     </div>
 
     <div class="tab" data-group="primary" data-tab="stats">
       {{#if (eq system.category "weapon")}}
-        {{> "systems/thecrawl/templates/item/parts/equipment/weapon.hbs"}}
+        {{> "systems/thecrawl/templates/items/parts/equipment/weapon.hbs"}}
       {{/if}}
 
       {{#if (eq system.category "armor")}}
-        {{> "systems/thecrawl/templates/item/parts/equipment/armor.hbs"}}
+        {{> "systems/thecrawl/templates/items/parts/equipment/armor.hbs"}}
       {{/if}}
 
       {{#if (eq system.category "consumable")}}
-        {{> "systems/thecrawl/templates/item/parts/equipment/consumable.hbs"}}
+        {{> "systems/thecrawl/templates/items/parts/equipment/consumable.hbs"}}
       {{/if}}
 
       {{#if (eq system.category "misc")}}
@@ -34,7 +34,7 @@
     </div>
 
     <div class="tab" data-group="primary" data-tab="description">
-      {{> "systems/thecrawl/templates/item/parts/equipment/description.hbs"}}
+      {{> "systems/thecrawl/templates/items/parts/equipment/description.hbs"}}
     </div>
 
   </section>
