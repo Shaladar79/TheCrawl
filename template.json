@@ -137,7 +137,7 @@
         "category": "general",
         "governingAttribute": "might",
 
-        "rank": 0,
+        "tier": 0,
         "trained": false,
 
         "action": {
