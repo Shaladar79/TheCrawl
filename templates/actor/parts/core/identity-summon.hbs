@@ -1,0 +1,15 @@
+{{#if isSummon}}
+<fieldset style="margin:10px 0; padding:10px;">
+  <legend>Summon</legend>
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+    <label>
+      Summoner
+      <input type="text" name="system.details.summoner" value="{{system.details.summoner}}" />
+    </label>
+    <label>
+      Duration
+      <input type="text" name="system.details.duration" value="{{system.details.duration}}" />
+    </label>
+  </div>
+</fieldset>
+{{/if}}
