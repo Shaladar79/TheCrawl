@@ -26,7 +26,7 @@
       "path": "lang/en.json"
     }
   ],
-  "packs": [
+ "packs": [
   {
     "name": "skills",
     "label": "The Crawl - Skills",
@@ -40,7 +40,8 @@
     "path": "packs/talents"
   }
 ],
-  "socket": false,
+"socket": false,
+
   "gridDistance": 5,
   "gridUnits": "ft",
   "url": "https://github.com/Shaladar79/thecrawl",
