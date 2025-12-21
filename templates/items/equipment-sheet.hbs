@@ -1,0 +1,41 @@
+<form class="thecrawl item-sheet equipment-sheet" autocomplete="off">
+  {{> "systems/thecrawl/templates/item/parts/equipment/header.hbs"}}
+
+  <nav class="sheet-tabs tabs" data-group="primary" style="margin-top:10px;">
+    <a class="item" data-tab="details">Details</a>
+    <a class="item" data-tab="stats">Stats</a>
+    <a class="item" data-tab="description">Description</a>
+  </nav>
+
+  <section class="sheet-body">
+
+    <div class="tab" data-group="primary" data-tab="details">
+      {{> "systems/thecrawl/templates/item/parts/equipment/details.hbs"}}
+    </div>
+
+    <div class="tab" data-group="primary" data-tab="stats">
+      {{#if (eq system.category "weapon")}}
+        {{> "systems/thecrawl/templates/item/parts/equipment/weapon.hbs"}}
+      {{/if}}
+
+      {{#if (eq system.category "armor")}}
+        {{> "systems/thecrawl/templates/item/parts/equipment/armor.hbs"}}
+      {{/if}}
+
+      {{#if (eq system.category "consumable")}}
+        {{> "systems/thecrawl/templates/item/parts/equipment/consumable.hbs"}}
+      {{/if}}
+
+      {{#if (eq system.category "misc")}}
+        <p style="opacity:0.8; margin:10px 0;">
+          Misc equipment has no special stats yet. Use Bonuses and Description.
+        </p>
+      {{/if}}
+    </div>
+
+    <div class="tab" data-group="primary" data-tab="description">
+      {{> "systems/thecrawl/templates/item/parts/equipment/description.hbs"}}
+    </div>
+
+  </section>
+</form>
