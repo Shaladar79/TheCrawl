@@ -1,0 +1,225 @@
+<form class="thecrawl actor-sheet {{actor.type}}" autocomplete="off">
+
+  <header class="sheet-header">
+    <div style="display:flex; gap:12px; align-items:center;">
+      <h1 style="flex:1; margin:0;">
+        <input name="name" type="text" value="{{actor.name}}" placeholder="Name" />
+      </h1>
+
+      <div style="min-width:220px;">
+        <div style="font-size:12px; opacity:0.85;">Actor Type</div>
+        <div style="font-weight:700;">{{actor.type}}</div>
+      </div>
+
+      <div style="min-width:220px;">
+        <div style="font-size:12px; opacity:0.85;">Sheet Mode</div>
+        <select name="system.meta.sheetMode">
+          <option value="auto"  {{#if (eq system.meta.sheetMode "auto")}}selected{{/if}}>Auto</option>
+          <option value="combat" {{#if (eq system.meta.sheetMode "combat")}}selected{{/if}}>Combat</option>
+          <option value="ally"  {{#if (eq system.meta.sheetMode "ally")}}selected{{/if}}>Ally</option>
+          <option value="minion" {{#if (eq system.meta.sheetMode "minion")}}selected{{/if}}>Minion</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <nav class="sheet-tabs tabs" data-group="primary" style="margin-top:10px;">
+    <a class="item" data-tab="core">Core</a>
+    <a class="item" data-tab="combat">Combat</a>
+    <a class="item" data-tab="notes">Notes</a>
+  </nav>
+
+  <section class="sheet-body">
+    {{!-- =========================
+         CORE TAB
+         ========================= --}}
+    <div class="tab" data-group="primary" data-tab="core">
+
+      {{!-- PC/NPC progression (tier + spirit) --}}
+      {{#if (or isPC isNPC)}}
+      <fieldset style="margin:10px 0; padding:10px;">
+        <legend>Progression</legend>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+          <label>
+            Tier
+            <input type="text" name="system.progression.tier" value="{{system.progression.tier}}" />
+          </label>
+          <label>
+            Spirit
+            <div style="display:flex; gap:6px; align-items:center;">
+              <input type="number" name="system.progression.spirit.value" value="{{system.progression.spirit.value}}" style="width:90px;" />
+              <span>/</span>
+              <input type="number" name="system.progression.spirit.max" value="{{system.progression.spirit.max}}" style="width:90px;" />
+            </div>
+          </label>
+        </div>
+      </fieldset>
+      {{/if}}
+
+      {{!-- Monster-only identity --}}
+      {{#if isMonster}}
+      <fieldset style="margin:10px 0; padding:10px;">
+        <legend>Monster</legend>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+          <label>
+            Category
+            <input type="text" name="system.details.category" value="{{system.details.category}}" />
+          </label>
+          <label>
+            Threat
+            <input type="text" name="system.details.threat" value="{{system.details.threat}}" />
+          </label>
+        </div>
+      </fieldset>
+      {{/if}}
+
+      {{!-- Companion / Summon specific --}}
+      {{#if isCompanion}}
+      <fieldset style="margin:10px 0; padding:10px;">
+        <legend>Companion</legend>
+        <label>
+          Owner
+          <input type="text" name="system.details.owner" value="{{system.details.owner}}" />
+        </label>
+      </fieldset>
+      {{/if}}
+
+      {{#if isSummon}}
+      <fieldset style="margin:10px 0; padding:10px;">
+        <legend>Summon</legend>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+          <label>
+            Summoner
+            <input type="text" name="system.details.summoner" value="{{system.details.summoner}}" />
+          </label>
+          <label>
+            Duration
+            <input type="text" name="system.details.duration" value="{{system.details.duration}}" />
+          </label>
+        </div>
+      </fieldset>
+      {{/if}}
+
+      {{!-- Attributes --}}
+      <fieldset style="margin:10px 0; padding:10px;">
+        <legend>Attributes</legend>
+        <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:10px;">
+          <label>Might <input type="number" name="system.attributes.might.value" value="{{system.attributes.might.value}}" /></label>
+          <label>Agility <input type="number" name="system.attributes.agility.value" value="{{system.attributes.agility.value}}" /></label>
+          <label>Endurance <input type="number" name="system.attributes.endurance.value" value="{{system.attributes.endurance.value}}" /></label>
+          <label>Insight <input type="number" name="system.attributes.insight.value" value="{{system.attributes.insight.value}}" /></label>
+          <label>Willpower <input type="number" name="system.attributes.willpower.value" value="{{system.attributes.willpower.value}}" /></label>
+          <label>Charisma <input type="number" name="system.attributes.charisma.value" value="{{system.attributes.charisma.value}}" /></label>
+        </div>
+      </fieldset>
+
+      {{!-- Resources --}}
+      <fieldset style="margin:10px 0; padding:10px;">
+        <legend>Resources</legend>
+        <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:10px;">
+          <label>
+            Vitality
+            <div style="display:flex; gap:6px; align-items:center;">
+              <input type="number" name="system.resources.vitality.value" value="{{system.resources.vitality.value}}" style="width:90px;" />
+              <span>/</span>
+              <input type="number" name="system.resources.vitality.max" value="{{system.resources.vitality.max}}" style="width:90px;" />
+            </div>
+          </label>
+
+          <label>
+            Stamina
+            <div style="display:flex; gap:6px; align-items:center;">
+              <input type="number" name="system.resources.stamina.value" value="{{system.resources.stamina.value}}" style="width:90px;" />
+              <span>/</span>
+              <input type="number" name="system.resources.stamina.max" value="{{system.resources.stamina.max}}" style="width:90px;" />
+            </div>
+          </label>
+
+          <label>
+            Mana
+            <div style="display:flex; gap:6px; align-items:center;">
+              <input type="number" name="system.resources.mana.value" value="{{system.resources.mana.value}}" style="width:90px;" />
+              <span>/</span>
+              <input type="number" name="system.resources.mana.max" value="{{system.resources.mana.max}}" style="width:90px;" />
+            </div>
+          </label>
+        </div>
+      </fieldset>
+
+      {{!-- Derived (placeholders for later automation) --}}
+      <fieldset style="margin:10px 0; padding:10px;">
+        <legend>Derived</legend>
+        <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:10px;">
+          <label>Defense <input type="number" name="system.derived.defense.value" value="{{system.derived.defense.value}}" /></label>
+          <label>Initiative <input type="number" name="system.derived.initiative.value" value="{{system.derived.initiative.value}}" /></label>
+          <label>Speed <input type="number" name="system.derived.speed.value" value="{{system.derived.speed.value}}" /></label>
+        </div>
+      </fieldset>
+
+    </div>
+
+    {{!-- =========================
+         COMBAT TAB
+         ========================= --}}
+    <div class="tab" data-group="primary" data-tab="combat">
+
+      <fieldset style="margin:10px 0; padding:10px;">
+        <legend>Combat</legend>
+
+        <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:10px;">
+          <label>
+            Wounds
+            <div style="display:flex; gap:6px; align-items:center;">
+              <input type="number" name="system.combat.wounds.value" value="{{system.combat.wounds.value}}" style="width:90px;" />
+              <span>/</span>
+              <input type="number" name="system.combat.wounds.max" value="{{system.combat.wounds.max}}" style="width:90px;" />
+            </div>
+          </label>
+
+          <label>Armor <input type="number" name="system.combat.armor.value" value="{{system.combat.armor.value}}" /></label>
+          <label>Shielding <input type="number" name="system.combat.shielding.value" value="{{system.combat.shielding.value}}" /></label>
+        </div>
+
+        {{!-- Monster extras --}}
+        {{#if isMonster}}
+        <div style="display:flex; gap:12px; margin-top:10px;">
+          <label style="display:flex; gap:6px; align-items:center;">
+            <input type="checkbox" name="system.combat.boss" {{#if system.combat.boss}}checked{{/if}} />
+            Boss
+          </label>
+          <label style="display:flex; gap:6px; align-items:center;">
+            <input type="checkbox" name="system.combat.lair" {{#if system.combat.lair}}checked{{/if}} />
+            Lair
+          </label>
+        </div>
+        {{/if}}
+
+      </fieldset>
+
+      <p style="opacity:0.8; margin:10px 0;">
+        Resistances/Immunities/Vulnerabilities are currently stored as objects in system data and will be surfaced later.
+      </p>
+
+    </div>
+
+    {{!-- =========================
+         NOTES TAB
+         ========================= --}}
+    <div class="tab" data-group="primary" data-tab="notes">
+      <fieldset style="margin:10px 0; padding:10px;">
+        <legend>Notes</legend>
+
+        <label style="display:block; margin-bottom:10px;">
+          Public
+          <textarea name="system.notes.public" rows="6">{{system.notes.public}}</textarea>
+        </label>
+
+        <label style="display:block;">
+          GM
+          <textarea name="system.notes.gm" rows="6">{{system.notes.gm}}</textarea>
+        </label>
+      </fieldset>
+    </div>
+  </section>
+</form>
+
