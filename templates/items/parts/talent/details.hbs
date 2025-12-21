@@ -1,0 +1,34 @@
+<fieldset style="margin:10px 0; padding:10px;">
+  <legend>Talent Details</legend>
+
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+    <label>
+      Key
+      <input type="text" name="system.key" value="{{system.key}}" placeholder="e.g. flame-burst, shadow-step" />
+    </label>
+
+    <label>
+      Tier
+      <input type="number" name="system.tier" value="{{system.tier}}" min="0" />
+    </label>
+
+    <label>
+      Governing Attribute
+      <select name="system.governingAttribute">
+        {{#each attributeOptions as |opt|}}
+          <option value="{{opt}}" {{#if (eq ../system.governingAttribute opt)}}selected{{/if}}>{{opt}}</option>
+        {{/each}}
+      </select>
+    </label>
+
+    <label>
+      Category
+      <input type="text" name="system.category" value="{{system.category}}" placeholder="talent" />
+    </label>
+
+    <label>
+      Misc Bonus
+      <input type="number" name="system.bonus.misc" value="{{system.bonus.misc}}" />
+    </label>
+  </div>
+</fieldset>
