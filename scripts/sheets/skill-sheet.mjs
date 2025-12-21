@@ -1,29 +1,24 @@
 // scripts/sheets/skill-sheet.mjs
-export class TheCrawlTalentSheet extends ItemSheet {
+export class TheCrawlSkillSheet extends ItemSheet {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      classes: ["thecrawl", "sheet", "item", "talent"],
+      classes: ["thecrawl", "sheet", "item", "skill"],
       width: 620,
       height: 720,
-      tabs: [
-        { navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "details" }
-      ]
+      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "details" }]
     });
   }
 
   get template() {
-    return "systems/thecrawl/templates/item/skill-sheet.hbs";
+    // IMPORTANT: your folder is templates/items (plural)
+    return "systems/thecrawl/templates/items/skill-sheet.hbs";
   }
 
   async getData(options = {}) {
     const data = await super.getData(options);
 
-    // Provide select options for dropdowns
-    data.actionTypes = ["passive", "active"];
     data.attributeOptions = ["might", "agility", "endurance", "insight", "willpower", "charisma"];
-
-    // A small display label for the sheet (Talent = skill item)
-    data.itemLabel = "Talent";
+    data.itemLabel = "Skill";
 
     return data;
   }
