@@ -1,1 +1,185 @@
+{
+  "Actor": {
+    "types": ["pc", "npc", "monster", "companion", "summon"],
+    "templates": {
+      "base": {
+        "details": {
+          "biography": "",
+          "faction": "",
+          "tags": []
+        },
+
+        "meta": {
+          "sheetMode": "auto",
+          "isMinion": false,
+          "isSummoned": false
+        },
+
+        "attributes": {
+          "level": 1,
+          "rank": "",
+          "xp": { "value": 0, "max": 0 },
+
+          "defense": { "value": 0 },
+          "initiative": { "value": 0 },
+          "speed": { "value": 0 },
+
+          "senses": {
+            "perception": { "value": 0 }
+          }
+        },
+
+        "resources": {
+          "hp": { "value": 0, "max": 0 },
+          "mana": { "value": 0, "max": 0 },
+          "stamina": { "value": 0, "max": 0 }
+        },
+
+        "combat": {
+          "wounds": { "value": 0, "max": 0 },
+          "armor": { "value": 0 },
+          "shielding": { "value": 0 },
+          "resistances": {},
+          "immunities": {},
+          "vulnerabilities": {}
+        },
+
+        "skills": {},
+
+        "notes": {
+          "public": "",
+          "gm": ""
+        }
+      },
+
+      "pc": {
+        "details": {
+          "background": "",
+          "species": "",
+          "class": ""
+        },
+
+        "progression": {
+          "advancements": 0,
+          "spent": 0
+        },
+
+        "currency": {}
+      },
+
+      "npc": {
+        "details": {
+          "role": "",
+          "disposition": "neutral"
+        },
+
+        "progression": {
+          "advancements": 0,
+          "spent": 0
+        }
+      },
+
+      "monster": {
+        "details": {
+          "category": "",
+          "threat": ""
+        },
+
+        "meta": {
+          "sheetMode": "combat"
+        },
+
+        "combat": {
+          "lair": false,
+          "boss": false
+        }
+      },
+
+      "companion": {
+        "details": {
+          "owner": ""
+        },
+
+        "meta": {
+          "sheetMode": "ally"
+        }
+      },
+
+      "summon": {
+        "details": {
+          "summoner": "",
+          "duration": ""
+        },
+
+        "meta": {
+          "isSummoned": true,
+          "sheetMode": "minion"
+        }
+      }
+    },
+
+    "pc": {
+      "templates": ["base", "pc"]
+    },
+    "npc": {
+      "templates": ["base", "npc"]
+    },
+    "monster": {
+      "templates": ["base", "monster"]
+    },
+    "companion": {
+      "templates": ["base", "companion"]
+    },
+    "summon": {
+      "templates": ["base", "summon"]
+    }
+  },
+
+  "Item": {
+    "types": ["ability", "equipment", "feature"],
+    "templates": {
+      "base": {
+        "description": "",
+        "source": "",
+        "tags": []
+      },
+
+      "ability": {
+        "action": {
+          "type": "passive",
+          "cost": 0
+        },
+        "costs": {
+          "hp": 0,
+          "mana": 0,
+          "stamina": 0
+        },
+        "scaling": {
+          "mode": "none",
+          "perRank": 0
+        }
+      },
+
+      "equipment": {
+        "equipped": false,
+        "slot": "",
+        "bonuses": {}
+      },
+
+      "feature": {
+        "enabled": true
+      }
+    },
+
+    "ability": {
+      "templates": ["base", "ability"]
+    },
+    "equipment": {
+      "templates": ["base", "equipment"]
+    },
+    "feature": {
+      "templates": ["base", "feature"]
+    }
+  }
+}
 
