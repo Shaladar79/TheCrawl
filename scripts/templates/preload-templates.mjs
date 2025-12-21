@@ -1,17 +1,13 @@
-// scripts/templates/preload-templates.mjs
+/// scripts/templates/preload-templates.mjs
 export async function preloadHandlebarsTemplates() {
   const templatePaths = [
-    // Shell
+    // Actor shell + parts (as you already have)
     "systems/thecrawl/templates/actor/actor-sheet.hbs",
-
-    // Top-level parts
     "systems/thecrawl/templates/actor/parts/header.hbs",
     "systems/thecrawl/templates/actor/parts/tabs.hbs",
     "systems/thecrawl/templates/actor/parts/tab-core.hbs",
     "systems/thecrawl/templates/actor/parts/tab-combat.hbs",
     "systems/thecrawl/templates/actor/parts/tab-notes.hbs",
-
-    // Core sub-parts
     "systems/thecrawl/templates/actor/parts/core/progression.hbs",
     "systems/thecrawl/templates/actor/parts/core/identity-monster.hbs",
     "systems/thecrawl/templates/actor/parts/core/identity-companion.hbs",
@@ -19,10 +15,17 @@ export async function preloadHandlebarsTemplates() {
     "systems/thecrawl/templates/actor/parts/core/attributes.hbs",
     "systems/thecrawl/templates/actor/parts/core/resources.hbs",
     "systems/thecrawl/templates/actor/parts/core/derived.hbs",
-
-    // Combat sub-parts
     "systems/thecrawl/templates/actor/parts/combat/combat-stats.hbs",
-    "systems/thecrawl/templates/actor/parts/combat/combat-monster-flags.hbs"
+    "systems/thecrawl/templates/actor/parts/combat/combat-monster-flags.hbs",
+
+    // Item shell + parts (Talent/Skill)
+    "systems/thecrawl/templates/item/skill-sheet.hbs",
+    "systems/thecrawl/templates/item/parts/skill/header.hbs",
+    "systems/thecrawl/templates/item/parts/skill/details.hbs",
+    "systems/thecrawl/templates/item/parts/skill/action.hbs",
+    "systems/thecrawl/templates/item/parts/skill/costs.hbs",
+    "systems/thecrawl/templates/item/parts/skill/scaling.hbs",
+    "systems/thecrawl/templates/item/parts/skill/description.hbs"
   ];
 
   await loadTemplates(templatePaths);
