@@ -26,6 +26,16 @@ export async function preloadHandlebarsTemplates() {
     "systems/thecrawl/templates/item/parts/skill/costs.hbs",
     "systems/thecrawl/templates/item/parts/skill/scaling.hbs",
     "systems/thecrawl/templates/item/parts/skill/description.hbs"
+
+    // Item shell + parts (Equipment)
+   "systems/thecrawl/templates/item/equipment-sheet.hbs",
+   "systems/thecrawl/templates/item/parts/equipment/header.hbs",
+   "systems/thecrawl/templates/item/parts/equipment/details.hbs",
+   "systems/thecrawl/templates/item/parts/equipment/weapon.hbs",
+   "systems/thecrawl/templates/item/parts/equipment/armor.hbs",
+   "systems/thecrawl/templates/item/parts/equipment/consumable.hbs",
+   "systems/thecrawl/templates/item/parts/equipment/description.hbs"
+
   ];
 
   await loadTemplates(templatePaths);
