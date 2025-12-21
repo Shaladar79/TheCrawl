@@ -26,7 +26,20 @@
       "path": "lang/en.json"
     }
   ],
-  "packs": [],
+  "packs": [
+  {
+    "name": "skills",
+    "label": "The Crawl - Skills",
+    "type": "Item",
+    "path": "packs/skills"
+  },
+  {
+    "name": "talents",
+    "label": "The Crawl - Talents",
+    "type": "Item",
+    "path": "packs/talents"
+  }
+]
   "socket": false,
   "gridDistance": 5,
   "gridUnits": "ft",
