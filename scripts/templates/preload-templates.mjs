@@ -1,13 +1,14 @@
-/// scripts/templates/preload-templates.mjs
+// scripts/templates/preload-templates.mjs
 export async function preloadHandlebarsTemplates() {
   const templatePaths = [
-    // Actor shell + parts (as you already have)
+    // Actor shell + parts
     "systems/thecrawl/templates/actor/actor-sheet.hbs",
     "systems/thecrawl/templates/actor/parts/header.hbs",
     "systems/thecrawl/templates/actor/parts/tabs.hbs",
     "systems/thecrawl/templates/actor/parts/tab-core.hbs",
     "systems/thecrawl/templates/actor/parts/tab-combat.hbs",
     "systems/thecrawl/templates/actor/parts/tab-notes.hbs",
+
     "systems/thecrawl/templates/actor/parts/core/progression.hbs",
     "systems/thecrawl/templates/actor/parts/core/identity-monster.hbs",
     "systems/thecrawl/templates/actor/parts/core/identity-companion.hbs",
@@ -15,28 +16,28 @@ export async function preloadHandlebarsTemplates() {
     "systems/thecrawl/templates/actor/parts/core/attributes.hbs",
     "systems/thecrawl/templates/actor/parts/core/resources.hbs",
     "systems/thecrawl/templates/actor/parts/core/derived.hbs",
+
     "systems/thecrawl/templates/actor/parts/combat/combat-stats.hbs",
     "systems/thecrawl/templates/actor/parts/combat/combat-monster-flags.hbs",
 
-    // Item shell + parts (Talent/Skill)
+    // Talent (Item type: skill)
     "systems/thecrawl/templates/item/skill-sheet.hbs",
     "systems/thecrawl/templates/item/parts/skill/header.hbs",
     "systems/thecrawl/templates/item/parts/skill/details.hbs",
     "systems/thecrawl/templates/item/parts/skill/action.hbs",
     "systems/thecrawl/templates/item/parts/skill/costs.hbs",
     "systems/thecrawl/templates/item/parts/skill/scaling.hbs",
-    "systems/thecrawl/templates/item/parts/skill/description.hbs"
+    "systems/thecrawl/templates/item/parts/skill/description.hbs",
 
-    // Item shell + parts (Equipment)
-   "systems/thecrawl/templates/item/equipment-sheet.hbs",
-   "systems/thecrawl/templates/item/parts/equipment/header.hbs",
-   "systems/thecrawl/templates/item/parts/equipment/details.hbs",
-   "systems/thecrawl/templates/item/parts/equipment/weapon.hbs",
-   "systems/thecrawl/templates/item/parts/equipment/armor.hbs",
-   "systems/thecrawl/templates/item/parts/equipment/consumable.hbs",
-   "systems/thecrawl/templates/item/parts/equipment/description.hbs"
-
+    // Equipment (Item type: equipment)
+    "systems/thecrawl/templates/item/equipment-sheet.hbs",
+    "systems/thecrawl/templates/item/parts/equipment/header.hbs",
+    "systems/thecrawl/templates/item/parts/equipment/details.hbs",
+    "systems/thecrawl/templates/item/parts/equipment/weapon.hbs",
+    "systems/thecrawl/templates/item/parts/equipment/armor.hbs",
+    "systems/thecrawl/templates/item/parts/equipment/consumable.hbs",
+    "systems/thecrawl/templates/item/parts/equipment/description.hbs"
   ];
 
-  await loadTemplates(templatePaths);
+  return loadTemplates(templatePaths);
 }
