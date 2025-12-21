@@ -1,0 +1,15 @@
+{{#if isMonster}}
+<fieldset style="margin:10px 0; padding:10px;">
+  <legend>Monster</legend>
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+    <label>
+      Category
+      <input type="text" name="system.details.category" value="{{system.details.category}}" />
+    </label>
+    <label>
+      Threat
+      <input type="text" name="system.details.threat" value="{{system.details.threat}}" />
+    </label>
+  </div>
+</fieldset>
+{{/if}}
