@@ -9,4 +9,15 @@
 .thecrawl.actor-sheet textarea {
   resize: vertical;
 }
+.thecrawl.item-sheet input[type="text"],
+.thecrawl.item-sheet input[type="number"],
+.thecrawl.item-sheet select,
+.thecrawl.item-sheet textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.thecrawl.item-sheet textarea {
+  resize: vertical;
+}
 
