@@ -1,0 +1,25 @@
+<form class="thecrawl item-sheet talent-sheet" autocomplete="off">
+  {{> "systems/thecrawl/templates/items/parts/talent/header.hbs"}}
+
+  <nav class="sheet-tabs tabs" data-group="primary" style="margin-top:10px;">
+    <a class="item" data-tab="details">Details</a>
+    <a class="item" data-tab="rules">Rules</a>
+    <a class="item" data-tab="description">Description</a>
+  </nav>
+
+  <section class="sheet-body">
+    <div class="tab" data-group="primary" data-tab="details">
+      {{> "systems/thecrawl/templates/items/parts/talent/details.hbs"}}
+    </div>
+
+    <div class="tab" data-group="primary" data-tab="rules">
+      {{> "systems/thecrawl/templates/items/parts/talent/action.hbs"}}
+      {{> "systems/thecrawl/templates/items/parts/talent/costs.hbs"}}
+      {{> "systems/thecrawl/templates/items/parts/talent/scaling.hbs"}}
+    </div>
+
+    <div class="tab" data-group="primary" data-tab="description">
+      {{> "systems/thecrawl/templates/items/parts/talent/description.hbs"}}
+    </div>
+  </section>
+</form>
