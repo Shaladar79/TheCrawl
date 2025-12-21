@@ -20,23 +20,24 @@ export async function preloadHandlebarsTemplates() {
     "systems/thecrawl/templates/actor/parts/combat/combat-stats.hbs",
     "systems/thecrawl/templates/actor/parts/combat/combat-monster-flags.hbs",
 
-    // Talent (Item type: skill)
-    "systems/thecrawl/templates/item/skill-sheet.hbs",
-    "systems/thecrawl/templates/item/parts/skill/header.hbs",
-    "systems/thecrawl/templates/item/parts/skill/details.hbs",
-    "systems/thecrawl/templates/item/parts/skill/action.hbs",
-    "systems/thecrawl/templates/item/parts/skill/costs.hbs",
-    "systems/thecrawl/templates/item/parts/skill/scaling.hbs",
-    "systems/thecrawl/templates/item/parts/skill/description.hbs",
+   // Talent (Item type: skill)
+"systems/thecrawl/templates/items/skill-sheet.hbs",
+"systems/thecrawl/templates/items/parts/skill/header.hbs",
+"systems/thecrawl/templates/items/parts/skill/details.hbs",
+"systems/thecrawl/templates/items/parts/skill/action.hbs",
+"systems/thecrawl/templates/items/parts/skill/costs.hbs",
+"systems/thecrawl/templates/items/parts/skill/scaling.hbs",
+"systems/thecrawl/templates/items/parts/skill/description.hbs",
 
-    // Equipment (Item type: equipment)
-    "systems/thecrawl/templates/item/equipment-sheet.hbs",
-    "systems/thecrawl/templates/item/parts/equipment/header.hbs",
-    "systems/thecrawl/templates/item/parts/equipment/details.hbs",
-    "systems/thecrawl/templates/item/parts/equipment/weapon.hbs",
-    "systems/thecrawl/templates/item/parts/equipment/armor.hbs",
-    "systems/thecrawl/templates/item/parts/equipment/consumable.hbs",
-    "systems/thecrawl/templates/item/parts/equipment/description.hbs"
+// Equipment (Item type: equipment)
+"systems/thecrawl/templates/items/equipment-sheet.hbs",
+"systems/thecrawl/templates/items/parts/equipment/header.hbs",
+"systems/thecrawl/templates/items/parts/equipment/details.hbs",
+"systems/thecrawl/templates/items/parts/equipment/weapon.hbs",
+"systems/thecrawl/templates/items/parts/equipment/armor.hbs",
+"systems/thecrawl/templates/items/parts/equipment/consumable.hbs",
+"systems/thecrawl/templates/items/parts/equipment/description.hbs"
+
   ];
 
   return loadTemplates(templatePaths);
