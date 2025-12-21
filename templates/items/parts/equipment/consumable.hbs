@@ -1,0 +1,20 @@
+<fieldset style="margin:10px 0; padding:10px;">
+  <legend>Consumable</legend>
+
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+    <label>
+      Uses (Current)
+      <input type="number" name="system.consumable.uses.value" value="{{system.consumable.uses.value}}" min="0" />
+    </label>
+
+    <label>
+      Uses (Max)
+      <input type="number" name="system.consumable.uses.max" value="{{system.consumable.uses.max}}" min="0" />
+    </label>
+  </div>
+
+  <label style="display:block; margin-top:10px;">
+    Effect
+    <textarea name="system.consumable.effect" rows="6">{{system.consumable.effect}}</textarea>
+  </label>
+</fieldset>
