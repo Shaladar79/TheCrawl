@@ -1,1 +1,36 @@
-
+{
+  "id": "thecrawl",
+  "title": "The Crawl a Dungeon adventure",
+  "description": "Custom game system for The Crawl.",
+  "version": "0.0.0.01",
+  "authors": [
+    {
+      "name": "Shaladar"
+    }
+  ],
+  "compatibility": {
+    "minimum": "13",
+    "verified": "13"
+  },
+  "esmodules": [
+    "system.mjs"
+  ],
+  "styles": [
+    "styles/styles.css"
+  ],
+  "template": "template.json",
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "packs": [],
+  "socket": false,
+  "gridDistance": 5,
+  "gridUnits": "ft",
+  "url": "https://github.com/Shaladar79/thecrawl",
+  "manifest": "https://raw.githubusercontent.com/Shaladar79/thecrawl/main/system.json",
+  "download": "https://github.com/Shaladar79/thecrawl/archive/refs/heads/main.zip"
+}
