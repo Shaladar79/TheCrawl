@@ -26,35 +26,35 @@
       "path": "lang/en.json"
     }
   ],
-"packs": [
-  {
-    "name": "races",
-    "label": "The Crawl - Races",
-    "type": "Item",
-    "path": "packs/races"
-  },
-  {
-    "name": "skills",
-    "label": "The Crawl - Skills",
-    "type": "Item",
-    "path": "packs/skills"
-  },
-  {
-    "name": "talents",
-    "label": "The Crawl - Talents",
-    "type": "Item",
-    "path": "packs/talents"
-  },
-  {
-    "name": "equipment",
-    "label": "The Crawl - Equipment",
-    "type": "Item",
-    "path": "packs/equipment"
-  }
-],
 
-"socket": false,
+  "packs": [
+    {
+      "name": "races",
+      "label": "The Crawl - Races",
+      "type": "Item",
+      "path": "packs/races"
+    },
+    {
+      "name": "skills",
+      "label": "The Crawl - Skills",
+      "type": "Item",
+      "path": "packs/skills"
+    },
+    {
+      "name": "talents",
+      "label": "The Crawl - Talents",
+      "type": "Item",
+      "path": "packs/talents"
+    },
+    {
+      "name": "equipment",
+      "label": "The Crawl - Equipment",
+      "type": "Item",
+      "path": "packs/equipment"
+    }
+  ],
 
+  "socket": false,
   "gridDistance": 5,
   "gridUnits": "ft",
   "url": "https://github.com/Shaladar79/thecrawl",
