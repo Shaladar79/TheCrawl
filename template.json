@@ -103,7 +103,7 @@
     "summon": { "templates": ["base", "summon"] }
   },
   "Item": {
-    "types": ["skill", "talent", "race", "equipment"],
+    "types": ["skill", "talent", "race", "equipment", "feature"],
     "templates": {
       "base": {
         "description": "",
