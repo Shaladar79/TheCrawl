@@ -120,13 +120,24 @@
       },
 
       "skill": {
-        "key": "",
-        "category": "skill",
-        "governingAttribute": "might",
-        "tier": 0,
-        "trained": false,
-        "bonus": { "misc": 0 }
-      },
+  "key": "",
+  "category": "skill",
+  "governingAttribute": "might",
+  "tier": 0,
+  "trained": false,
+
+  "bonus": { "misc": 0 },
+
+  "progress": {
+    "current": 0,
+    "target": 0,
+    "locked": false,
+    "lastGain": 0
+  },
+
+  "modifiers": []
+},
+
       "talent": {
         "key": "",
         "category": "talent",
