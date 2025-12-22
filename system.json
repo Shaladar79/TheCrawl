@@ -48,6 +48,12 @@
       "label": "The Crawl - Equipment",
       "type": "Item",
       "path": "packs/equipment"
+    },
+    {
+      "name": "features",
+      "label": "The Crawl - Features",
+      "type": "Item",
+      "path": "packs/features"
     }
   ],
   "socket": false,
