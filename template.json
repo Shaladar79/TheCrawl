@@ -110,6 +110,14 @@
         "source": "",
         "tags": []
       },
+      "feature": {
+        "key": "",
+        "category": "feature",
+        "tier": 0,
+        "bonus": { "misc": 0 },
+        "description": ""
+      },
+
       "skill": {
         "key": "",
         "category": "skill",
@@ -174,6 +182,7 @@
     "skill": { "templates": ["base", "skill"] },
     "talent": { "templates": ["base", "talent"] },
     "race": { "templates": ["base", "race"] },
-    "equipment": { "templates": ["base", "equipment"] }
+    "equipment": { "templates": ["base", "equipment"] },
+    "feature": { "templates": ["base", "feature"] }
   }
 }
