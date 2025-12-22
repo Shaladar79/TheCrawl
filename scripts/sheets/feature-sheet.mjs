@@ -1,4 +1,5 @@
 // scripts/sheets/feature-sheet.mjs
+
 export class TheCrawlFeatureSheet extends ItemSheet {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -15,8 +16,10 @@ export class TheCrawlFeatureSheet extends ItemSheet {
 
   async getData(options = {}) {
     const data = await super.getData(options);
+
     data.attributeOptions = ["might", "agility", "endurance", "insight", "willpower", "charisma"];
     data.itemLabel = "Feature";
+
     return data;
   }
 }
