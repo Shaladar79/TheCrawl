@@ -138,26 +138,51 @@
   "modifiers": []
 },
 
-      "talent": {
-        "key": "",
-        "category": "talent",
-        "governingAttribute": "might",
-        "tier": 0,
-        "action": {
-          "type": "passive",
-          "cost": 0
-        },
-        "costs": {
-          "vitality": 0,
-          "stamina": 0,
-          "mana": 0
-        },
-        "scaling": {
-          "mode": "none",
-          "perTier": 0
-        },
-        "bonus": { "misc": 0 }
-      },
+     "talent": {
+  "key": "",
+  "category": "talent",
+  "subtype": "spell",
+
+  "governingAttribute": "might",
+  "tier": 0,
+
+  "action": {
+    "type": "active",
+    "cost": 0
+  },
+
+  "costs": {
+    "vitality": 0,
+    "stamina": 0,
+    "mana": 0
+  },
+
+  "requirements": {
+    "spellSchoolKey": "",
+    "weaponType": ""
+  },
+
+  "scaling": {
+    "mode": "none",
+    "perTier": 0
+  },
+
+  "effect": {
+    "base": "",
+    "perSuccess": ""
+  },
+
+  "progress": {
+    "current": 0,
+    "target": 0,
+    "locked": false,
+    "lastGain": 0
+  },
+
+  "bonus": { "misc": 0 },
+  "modifiers": []
+},
+
       "race": {
         "key": "",
         "category": "race",
