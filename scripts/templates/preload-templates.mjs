@@ -21,38 +21,44 @@ export async function preloadHandlebarsTemplates() {
     "systems/thecrawl/templates/actor/parts/combat/combat-monster-flags.hbs",
 
    // Talent (Item type: skill)
-"systems/thecrawl/templates/items/skill-sheet.hbs",
-"systems/thecrawl/templates/items/parts/skill/header.hbs",
-"systems/thecrawl/templates/items/parts/skill/details.hbs",
-"systems/thecrawl/templates/items/parts/skill/action.hbs",
-"systems/thecrawl/templates/items/parts/skill/costs.hbs",
-"systems/thecrawl/templates/items/parts/skill/scaling.hbs",
-"systems/thecrawl/templates/items/parts/skill/description.hbs",
+    "systems/thecrawl/templates/items/skill-sheet.hbs",
+    "systems/thecrawl/templates/items/parts/skill/header.hbs",
+    "systems/thecrawl/templates/items/parts/skill/details.hbs",
+    "systems/thecrawl/templates/items/parts/skill/action.hbs",
+    "systems/thecrawl/templates/items/parts/skill/costs.hbs",
+    "systems/thecrawl/templates/items/parts/skill/scaling.hbs",
+    "systems/thecrawl/templates/items/parts/skill/description.hbs",
 
-// Equipment (Item type: equipment)
-"systems/thecrawl/templates/items/equipment-sheet.hbs",
-"systems/thecrawl/templates/items/parts/equipment/header.hbs",
-"systems/thecrawl/templates/items/parts/equipment/details.hbs",
-"systems/thecrawl/templates/items/parts/equipment/weapon.hbs",
-"systems/thecrawl/templates/items/parts/equipment/armor.hbs",
-"systems/thecrawl/templates/items/parts/equipment/consumable.hbs",
-"systems/thecrawl/templates/items/parts/equipment/description.hbs",
+  // Equipment (Item type: equipment)
+    "systems/thecrawl/templates/items/equipment-sheet.hbs",
+    "systems/thecrawl/templates/items/parts/equipment/header.hbs",
+    "systems/thecrawl/templates/items/parts/equipment/details.hbs",
+    "systems/thecrawl/templates/items/parts/equipment/weapon.hbs",
+    "systems/thecrawl/templates/items/parts/equipment/armor.hbs",
+    "systems/thecrawl/templates/items/parts/equipment/consumable.hbs",
+    "systems/thecrawl/templates/items/parts/equipment/description.hbs",
 
-    // Talent templates
-"systems/thecrawl/templates/items/talent-sheet.hbs",
-"systems/thecrawl/templates/items/parts/talent/header.hbs",
-"systems/thecrawl/templates/items/parts/talent/details.hbs",
-"systems/thecrawl/templates/items/parts/talent/action.hbs",
-"systems/thecrawl/templates/items/parts/talent/costs.hbs",
-"systems/thecrawl/templates/items/parts/talent/scaling.hbs",
-"systems/thecrawl/templates/items/parts/talent/description.hbs",
+  // Feature templates
+    "systems/thecrawl/templates/items/feature-sheet.hbs",
+    "systems/thecrawl/templates/items/parts/feature/header.hbs",
+    "systems/thecrawl/templates/items/parts/feature/details.hbs",
+    "systems/thecrawl/templates/items/parts/feature/description.hbs",
 
-// Race templates
-"systems/thecrawl/templates/items/race-sheet.hbs",
-"systems/thecrawl/templates/items/parts/race/header.hbs",
-"systems/thecrawl/templates/items/parts/race/details.hbs",
-"systems/thecrawl/templates/items/parts/race/grants.hbs",
-"systems/thecrawl/templates/items/parts/race/description.hbs"
+  // Talent templates
+    "systems/thecrawl/templates/items/talent-sheet.hbs",
+    "systems/thecrawl/templates/items/parts/talent/header.hbs",
+    "systems/thecrawl/templates/items/parts/talent/details.hbs",
+    "systems/thecrawl/templates/items/parts/talent/action.hbs",
+    "systems/thecrawl/templates/items/parts/talent/costs.hbs",
+    "systems/thecrawl/templates/items/parts/talent/scaling.hbs",
+    "systems/thecrawl/templates/items/parts/talent/description.hbs",
+
+  // Race templates
+    "systems/thecrawl/templates/items/race-sheet.hbs",
+    "systems/thecrawl/templates/items/parts/race/header.hbs",
+    "systems/thecrawl/templates/items/parts/race/details.hbs",
+    "systems/thecrawl/templates/items/parts/race/grants.hbs",
+    "systems/thecrawl/templates/items/parts/race/description.hbs"
 
   ];
 
