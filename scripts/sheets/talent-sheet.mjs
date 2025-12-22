@@ -16,8 +16,30 @@ export class TheCrawlTalentSheet extends ItemSheet {
   async getData(options = {}) {
     const data = await super.getData(options);
 
-    data.actionTypes = ["passive", "active"];
+    // Talents are only action-based (spells or special attacks)
+    data.actionTypes = ["active"];
+
+    // Governing attribute options
     data.attributeOptions = ["might", "agility", "endurance", "insight", "willpower", "charisma"];
+
+    // NEW: Talent subtype (spell vs special attack)
+    data.talentSubtypes = ["spell", "specialAttack"];
+
+    // Placeholder list for later dropdown use (optional; template may ignore for now)
+    data.weaponTypes = [
+      "unarmed",
+      "dagger",
+      "sword",
+      "axe",
+      "mace",
+      "spear",
+      "polearm",
+      "bow",
+      "crossbow",
+      "staff",
+      "wand"
+    ];
+
     data.itemLabel = "Talent";
 
     return data;
