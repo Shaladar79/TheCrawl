@@ -6,7 +6,8 @@
         "details": {
           "biography": "",
           "faction": "",
-          "tags": []
+          "tags": [],
+          "modifiers": []
         },
         "meta": {
           "sheetMode": "auto",
