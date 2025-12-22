@@ -12,4 +12,27 @@
       <textarea name="system.notes.gm" rows="6">{{system.notes.gm}}</textarea>
     </label>
   </fieldset>
+
+  {{!-- =====================================================
+       TEMP DEBUG PANEL (remove later when not needed)
+       Shows collected modifiers from owned items
+       ===================================================== --}}
+
+  <fieldset style="margin:10px 0; padding:10px;">
+    <legend>Debug (Modifiers)</legend>
+
+    <details>
+      <summary style="cursor:pointer; user-select:none;">
+        Show collectedModifiers (from owned items)
+      </summary>
+
+      <p style="opacity:0.8; margin:10px 0 10px;">
+        This is a temporary debug view. Data source: <code>system.debug.collectedModifiers</code>.
+      </p>
+
+      <pre style="white-space:pre-wrap; background:#111; color:#ddd; padding:8px; border-radius:4px; margin:0;">
+{{json system.debug.collectedModifiers}}
+      </pre>
+    </details>
+  </fieldset>
 </div>
