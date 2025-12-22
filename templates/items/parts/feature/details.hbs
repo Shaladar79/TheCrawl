@@ -4,22 +4,45 @@
   <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
     <label>
       Key
-      <input type="text" name="system.key" value="{{system.key}}" placeholder="e.g. darkvision, sturdy, lucky" />
-    </label>
-
-    <label>
-      Tier
-      <input type="number" name="system.tier" value="{{system.tier}}" min="0" />
+      <input
+        type="text"
+        name="system.key"
+        value="{{system.key}}"
+        placeholder="e.g. darkvision, hardy, lucky"
+      />
     </label>
 
     <label>
       Category
-      <input type="text" name="system.category" value="{{system.category}}" placeholder="feature" />
+      <input
+        type="text"
+        name="system.category"
+        value="{{system.category}}"
+        placeholder="feature"
+      />
     </label>
 
     <label>
-      Misc Bonus
-      <input type="number" name="system.bonus.misc" value="{{system.bonus.misc}}" />
+      Tier
+      <input
+        type="number"
+        name="system.tier"
+        value="{{system.tier}}"
+        min="0"
+      />
     </label>
   </div>
+</fieldset>
+
+<fieldset style="margin:10px 0; padding:10px;">
+  <legend>Modifiers</legend>
+
+  <p style="opacity:0.8; margin:0 0 10px;">
+    Modifiers define how this Feature affects attributes, resources,
+    derived stats, or skills. Editing UI will be added later.
+  </p>
+
+  <pre style="white-space:pre-wrap; background:#111; color:#ddd; padding:8px; border-radius:4px;">
+{{system.modifiers}}
+  </pre>
 </fieldset>
