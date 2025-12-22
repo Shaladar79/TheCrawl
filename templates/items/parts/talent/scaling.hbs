@@ -4,12 +4,95 @@
   <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
     <label>
       Mode
-      <input type="text" name="system.scaling.mode" value="{{system.scaling.mode}}" placeholder="none / perTier / custom" />
+      <input
+        type="text"
+        name="system.scaling.mode"
+        value="{{system.scaling.mode}}"
+        placeholder="none / perTier / custom"
+      />
     </label>
 
     <label>
       Per Tier
-      <input type="number" name="system.scaling.perTier" value="{{system.scaling.perTier}}" />
+      <input
+        type="number"
+        name="system.scaling.perTier"
+        value="{{system.scaling.perTier}}"
+        min="0"
+      />
     </label>
   </div>
+</fieldset>
+
+<fieldset style="margin:10px 0; padding:10px;">
+  <legend>Effects</legend>
+
+  <div style="display:grid; grid-template-columns: 1fr; gap:10px;">
+    <label>
+      Base Effect
+      <textarea
+        name="system.effect.base"
+        rows="3"
+        placeholder="What happens when used (baseline)."
+      >{{system.effect.base}}</textarea>
+    </label>
+
+    <label>
+      Per Success Effect
+      <textarea
+        name="system.effect.perSuccess"
+        rows="3"
+        placeholder="What happens per success (e.g., +2 damage per success)."
+      >{{system.effect.perSuccess}}</textarea>
+    </label>
+  </div>
+</fieldset>
+
+<fieldset style="margin:10px 0; padding:10px;">
+  <legend>Advancement Progress</legend>
+
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+    <label>
+      Current Progress
+      <input
+        type="number"
+        name="system.progress.current"
+        value="{{system.progress.current}}"
+        min="0"
+      />
+    </label>
+
+    <label>
+      Target Progress
+      <input
+        type="number"
+        name="system.progress.target"
+        value="{{system.progress.target}}"
+        min="0"
+      />
+    </label>
+
+    <label style="display:flex; gap:10px; align-items:center; padding-top:22px;">
+      <input
+        type="checkbox"
+        name="system.progress.locked"
+        {{#if system.progress.locked}}checked{{/if}}
+      />
+      Lock Progress
+    </label>
+
+    <label>
+      Last Gain
+      <input
+        type="number"
+        name="system.progress.lastGain"
+        value="{{system.progress.lastGain}}"
+        min="0"
+      />
+    </label>
+  </div>
+
+  <p style="opacity:0.8; margin:10px 0 0;">
+    Progress is intended for GM-controlled advancement automation. Target will later be derived from Tier (Tier × 10) unless overridden.
+  </p>
 </fieldset>
