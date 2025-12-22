@@ -7,6 +7,7 @@ import { TheCrawlSkillSheet } from "./skill-sheet.mjs";
 import { TheCrawlTalentSheet } from "./talent-sheet.mjs";
 import { TheCrawlRaceSheet } from "./race-sheet.mjs";
 import { TheCrawlEquipmentSheet } from "./equipment-sheet.mjs";
+import { TheCrawlFeatureSheet } from "./feature-sheet.mjs";
 
 export function registerSheets() {
   // Actor sheet
@@ -23,6 +24,7 @@ export function registerSheets() {
   Items.registerSheet("thecrawl", TheCrawlTalentSheet, { types: ["talent"], makeDefault: true });
   Items.registerSheet("thecrawl", TheCrawlRaceSheet, { types: ["race"], makeDefault: true });
   Items.registerSheet("thecrawl", TheCrawlEquipmentSheet, { types: ["equipment"], makeDefault: true });
+  Items.registerSheet("thecrawl", TheCrawlFeatureSheet, { types: ["feature"], makeDefault: true });
 
   console.log("The Crawl | Sheets registered");
 }
