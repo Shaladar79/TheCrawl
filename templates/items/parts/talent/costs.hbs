@@ -17,4 +17,16 @@
       <input type="number" name="system.costs.mana" value="{{system.costs.mana}}" min="0" />
     </label>
   </div>
+
+  {{#if (eq system.subtype "spell")}}
+    <p style="opacity:0.8; margin:10px 0 0;">
+      Spell costs typically use Mana.
+    </p>
+  {{/if}}
+
+  {{#if (eq system.subtype "specialAttack")}}
+    <p style="opacity:0.8; margin:10px 0 0;">
+      Special attacks typically use Stamina.
+    </p>
+  {{/if}}
 </fieldset>
