@@ -5,9 +5,7 @@ export class TheCrawlSkillSheet extends ItemSheet {
       classes: ["thecrawl", "sheet", "item", "skill"],
       width: 620,
       height: 720,
-      tabs: [
-        { navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "details" }
-      ]
+      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "details" }]
     });
   }
 
@@ -17,7 +15,19 @@ export class TheCrawlSkillSheet extends ItemSheet {
 
   async getData(options = {}) {
     const data = await super.getData(options);
+
     data.attributeOptions = ["might", "agility", "endurance", "insight", "willpower", "charisma"];
+
+    // Placeholder list for later dropdown work (optional)
+    data.skillCategories = [
+      "skill",
+      "spellSchool",
+      "weapon",
+      "lore",
+      "craft",
+      "social"
+    ];
+
     data.itemLabel = "Skill";
     return data;
   }
