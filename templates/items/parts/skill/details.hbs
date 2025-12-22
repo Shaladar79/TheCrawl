@@ -1,48 +1,80 @@
 <fieldset style="margin:10px 0; padding:10px;">
-  <legend>Talent Details</legend>
+  <legend>Skill Details</legend>
 
   <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
     <label>
       Key
-      <input type="text" name="system.key" value="{{system.key}}" placeholder="e.g. stealth, longsword, pyromancy" />
+      <input
+        type="text"
+        name="system.key"
+        value="{{system.key}}"
+        placeholder="e.g. stealth, history, longsword"
+      />
     </label>
 
     <label>
       Category
-      <input type="text" name="system.category" value="{{system.category}}" placeholder="general / weapon / spell / lore / etc." />
+      <input
+        type="text"
+        name="system.category"
+        value="{{system.category}}"
+        placeholder="skill / weapon / spell / lore / etc."
+      />
     </label>
 
     <label>
       Governing Attribute
       <select name="system.governingAttribute">
         {{#each attributeOptions as |opt|}}
-          <option value="{{opt}}" {{#if (eq ../system.governingAttribute opt)}}selected{{/if}}>{{opt}}</option>
+          <option
+            value="{{opt}}"
+            {{#if (eq ../system.governingAttribute opt)}}selected{{/if}}
+          >
+            {{opt}}
+          </option>
         {{/each}}
       </select>
     </label>
 
     <label style="display:flex; gap:10px; align-items:center; padding-top:22px;">
-      <input type="checkbox" name="system.trained" {{#if system.trained}}checked{{/if}} />
+      <input
+        type="checkbox"
+        name="system.trained"
+        {{#if system.trained}}checked{{/if}}
+      />
       Trained
     </label>
 
     <label>
       Tier
-      <input type="number" name="system.tier" value="{{system.rank}}" />
+      <input
+        type="number"
+        name="system.tier"
+        value="{{system.tier}}"
+        min="0"
+      />
     </label>
 
     <label>
       Misc Bonus
-      <input type="number" name="system.bonus.misc" value="{{system.bonus.misc}}" />
+      <input
+        type="number"
+        name="system.bonus.misc"
+        value="{{system.bonus.misc}}"
+      />
     </label>
   </div>
 </fieldset>
 
 <fieldset style="margin:10px 0; padding:10px;">
   <legend>Modifiers</legend>
-  <p style="opacity:0.8; margin:0 0 10px;">
-    Modifiers are not editable yet. This will become a structured list.
-  </p>
-  <pre style="white-space:pre-wrap;">{{system.modifiers}}</pre>
-</fieldset>
 
+  <p style="opacity:0.8; margin:0 0 10px;">
+    Modifiers define how this Skill affects attributes, resources,
+    derived stats, or skills. Editing UI will be added later.
+  </p>
+
+  <pre style="white-space:pre-wrap; background:#111; color:#ddd; padding:8px; border-radius:4px;">
+{{system.modifiers}}
+  </pre>
+</fieldset>
