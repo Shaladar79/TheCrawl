@@ -1,47 +1,18 @@
 <fieldset style="margin:10px 0; padding:10px;">
   <legend>Skill Rules</legend>
 
-  <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
-    <label>
-      Skill Type
-      <select name="system.action.type">
-        <option value="passive" {{#if (eq system.action.type "passive")}}selected{{/if}}>Passive</option>
-        <option value="active" {{#if (eq system.action.type "active")}}selected{{/if}}>Active</option>
-      </select>
-    </label>
+  <p style="opacity:0.85; margin:0 0 10px;">
+    Skills are proficiencies (including spell schools). They are not actions. Actions are Talents (Spells or Special Attacks).
+  </p>
 
+  <div style="display:grid; grid-template-columns: 1fr; gap:10px;">
     <label>
-      Action Cost
-      <input
-        type="number"
-        name="system.action.cost"
-        value="{{system.action.cost}}"
-        min="0"
-      />
-    </label>
-  </div>
-</fieldset>
-
-<fieldset style="margin:10px 0; padding:10px;">
-  <legend>Scaling</legend>
-
-  <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
-    <label>
-      Scaling Mode
-      <select name="system.scaling.mode">
-        <option value="none" {{#if (eq system.scaling.mode "none")}}selected{{/if}}>None</option>
-        <option value="tier" {{#if (eq system.scaling.mode "tier")}}selected{{/if}}>Per Tier</option>
-      </select>
-    </label>
-
-    <label>
-      Value per Tier
-      <input
-        type="number"
-        name="system.scaling.perTier"
-        value="{{system.scaling.perTier}}"
-        min="0"
-      />
+      Usage Notes (optional)
+      <textarea
+        name="system.rules"
+        rows="6"
+        placeholder="Notes for how this skill is used, common applications, GM guidance, etc."
+      >{{system.rules}}</textarea>
     </label>
   </div>
 </fieldset>
