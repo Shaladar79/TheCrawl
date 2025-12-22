@@ -109,7 +109,8 @@
       "base": {
         "description": "",
         "source": "",
-        "tags": []
+        "tags": [],
+        "modifiers": []
       },
       "feature": {
         "key": "",
