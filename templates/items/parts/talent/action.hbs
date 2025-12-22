@@ -4,16 +4,26 @@
   <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
     <label>
       Action Type
-      <select name="system.action.type">
-        {{#each actionTypes as |t|}}
-          <option value="{{t}}" {{#if (eq ../system.action.type t)}}selected{{/if}}>{{t}}</option>
-        {{/each}}
-      </select>
+      <input
+        type="text"
+        name="system.action.type"
+        value="{{#if system.action.type}}{{system.action.type}}{{else}}active{{/if}}"
+        readonly
+      />
     </label>
 
     <label>
       Action Cost
-      <input type="number" name="system.action.cost" value="{{system.action.cost}}" min="0" />
+      <input
+        type="number"
+        name="system.action.cost"
+        value="{{system.action.cost}}"
+        min="0"
+      />
     </label>
   </div>
+
+  <p style="opacity:0.8; margin:10px 0 0;">
+    Talents are always actions (spells or special attacks).
+  </p>
 </fieldset>
