@@ -13,7 +13,7 @@ export async function initTheCrawl() {
   // Expose config namespace if you want it later.
   CONFIG.THECRAWL = CONFIG.THECRAWL ?? {};
 
-  // Document classes (safe to set now; the stubs do nothing special yet)
+  // Register document classes FIRST (required for _preCreate auto-keying to run)
   CONFIG.Actor.documentClass = TheCrawlActor;
   CONFIG.Item.documentClass = TheCrawlItem;
 
@@ -25,4 +25,3 @@ export async function initTheCrawl() {
 
   console.log("The Crawl | Ready");
 }
-
