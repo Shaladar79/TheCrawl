@@ -92,7 +92,8 @@ export class TheCrawlActor extends Actor {
    * 21-35  = 3 dice
    * 36-55  = 4 dice
    * 56-79  = 5 dice
-   * (80+ handled later as auto-success; not applied in this roll yet)
+   *
+   * NOTE: 80+ is handled via auto-successes (implemented in rollSkill).
    */
   _attributeToDice(attrValue) {
     const v = Number(attrValue ?? 0);
@@ -114,6 +115,8 @@ export class TheCrawlActor extends Actor {
    * 21-30  = 3 dice
    * 31-40  = 4 dice
    * 41-50  = 5 dice
+   *
+   * NOTE: 51+ is handled via auto-successes (implemented in rollSkill).
    */
   _scoreToDice(score) {
     const v = Number(score ?? 0);
@@ -128,10 +131,37 @@ export class TheCrawlActor extends Actor {
   }
 
   /**
+   * Auto-success rules (IMPLEMENTED):
+   * - Attribute 80+ grants auto-successes (no extra dice beyond the 5-die cap)
+   * - Skill score 51+ grants auto-successes (no extra dice beyond the 5-die cap)
+   *
+   * Scaling (conservative, predictable):
+   * - Attribute: +1 at 80, +1 per additional full +20 thereafter (100, 120, ...)
+   * - Skill:     +1 at 51, +1 per additional full +20 thereafter (71, 91, ...)
+   *
+   * Returns: { attributeAuto, skillAuto, totalAuto }
+   */
+  _computeAutoSuccesses(attrValue, score) {
+    const a = Number(attrValue ?? 0);
+    const s = Number(score ?? 0);
+
+    const attributeAuto = a >= 80 ? (1 + Math.floor((a - 80) / 20)) : 0;
+    const skillAuto = s >= 51 ? (1 + Math.floor((s - 51) / 20)) : 0;
+
+    return {
+      attributeAuto,
+      skillAuto,
+      totalAuto: attributeAuto + skillAuto
+    };
+  }
+
+  /**
    * Evaluate d12 results:
    * 10-11 = +1 success
    * 12    = +2 successes
    * 1     = -1 success
+   *
+   * Floor (dice-only net) at -3.
    */
   _countSuccessesFromD12(results) {
     let successes = 0;
@@ -174,6 +204,9 @@ export class TheCrawlActor extends Actor {
 
     const totalDice = Math.max(0, attrDice + skillDice);
 
+    // Auto-successes from high Attribute / Score (no extra dice; additive successes)
+    const auto = this._computeAutoSuccesses(attrValue, score);
+
     // Roll d12 pool (allow 0 dice: still produce a message)
     let roll = null;
     let results = [];
@@ -183,7 +216,8 @@ export class TheCrawlActor extends Actor {
       results = roll.dice?.[0]?.results?.map(r => r.result) ?? [];
     }
 
-    const netSuccesses = this._countSuccessesFromD12(results);
+    const diceNet = this._countSuccessesFromD12(results);
+    const netSuccesses = diceNet + auto.totalAuto;
 
     const title = `${this.name} rolls ${skill.name}`;
     const breakdown = `
@@ -197,6 +231,18 @@ export class TheCrawlActor extends Actor {
     const resultsLine = totalDice > 0
       ? `<div style="margin-top:6px;"><strong>Dice:</strong> [${results.join(", ")}]</div>`
       : `<div style="margin-top:6px;"><strong>Dice:</strong> (no dice)</div>`;
+
+    const autoLine = (auto.totalAuto > 0)
+      ? `
+        <div style="margin-top:6px;">
+          <div><strong>Auto Successes:</strong> ${auto.totalAuto}
+            <span style="opacity:0.85;">
+              (Attr: ${auto.attributeAuto}, Score: ${auto.skillAuto})
+            </span>
+          </div>
+        </div>
+      `
+      : ``;
 
     const scoring = `
       <div style="margin-top:6px;">
@@ -212,6 +258,7 @@ export class TheCrawlActor extends Actor {
         <h3 style="margin:0;">${title}</h3>
         ${breakdown}
         ${resultsLine}
+        ${autoLine}
         ${scoring}
       </div>
     `;
@@ -235,11 +282,17 @@ export class TheCrawlActor extends Actor {
       attrDice,
       skillDice,
       totalDice,
+      autoSuccesses: {
+        attributeAuto: auto.attributeAuto,
+        skillAuto: auto.skillAuto,
+        totalAuto: auto.totalAuto
+      },
       results,
+      diceNet,
       netSuccesses
     };
 
-    return { roll, results, netSuccesses };
+    return { roll, results, diceNet, autoSuccesses: auto, netSuccesses };
   }
 
   prepareDerivedData() {
