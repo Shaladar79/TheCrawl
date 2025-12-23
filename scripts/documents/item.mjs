@@ -10,8 +10,6 @@ function slugify(str) {
 }
 
 async function collectExistingKeys(item) {
-  // Prefer keys on the owning actor (most relevant).
-  // If no parent (world item), fall back to world items.
   const keys = new Set();
 
   const add = (it) => {
@@ -19,9 +17,11 @@ async function collectExistingKeys(item) {
     if (k) keys.add(k);
   };
 
+  // Owned items: enforce uniqueness within that actor
   if (item?.parent) {
     for (const it of item.parent.items) add(it);
   } else if (game?.items) {
+    // World items: enforce uniqueness among world items
     for (const it of game.items) add(it);
   }
 
@@ -51,7 +51,7 @@ function buildBaseKey({ type, name, system }) {
   }
 
   if (type === "feature") {
-    // Features are always passive adjustments; keep scheme simple.
+    // Features are always passive adjustments; keep scheme simple and stable.
     return `feature-${nameSlug}`;
   }
 
@@ -79,10 +79,10 @@ export class TheCrawlItem extends Item {
     const existing = await collectExistingKeys(this);
     const finalKey = uniqueKey(base, existing);
 
-    // IMPORTANT: set on the CREATION DATA so it persists
+    // IMPORTANT: write into the CREATE payload so it persists
     foundry.utils.setProperty(data, "system.key", finalKey);
 
-    // Also set on the source for safety (doesn't hurt)
+    // Extra safety
     this.updateSource({ "system.key": finalKey });
   }
 }
