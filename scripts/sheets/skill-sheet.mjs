@@ -16,17 +16,23 @@ export class TheCrawlSkillSheet extends ItemSheet {
   async getData(options = {}) {
     const data = await super.getData(options);
 
+    // Must match Actor attribute keys (template.json Actor.templates.base.attributes)
     data.attributeOptions = ["might", "agility", "endurance", "insight", "willpower", "charisma"];
 
-    // Placeholder list for later dropdown work (optional)
+    // Skill category is a controlled vocabulary (dropdown)
+    // Keep "skill" and "spellSchool" as the important ones for talent validation.
     data.skillCategories = [
       "skill",
       "spellSchool",
       "weapon",
       "lore",
       "craft",
-      "social"
+      "social",
+      "other"
     ];
+
+    // Tier dropdown (0-10 for now; easy to extend later)
+    data.tierOptions = Array.from({ length: 11 }, (_, i) => i);
 
     data.itemLabel = "Skill";
     return data;
