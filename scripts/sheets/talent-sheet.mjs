@@ -5,7 +5,11 @@ export class TheCrawlTalentSheet extends ItemSheet {
       classes: ["thecrawl", "sheet", "item", "talent"],
       width: 640,
       height: 760,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "details" }]
+      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "details" }],
+
+      // v13: ensure form changes submit correctly
+      submitOnChange: true,
+      submitOnClose: true
     });
   }
 
@@ -22,10 +26,10 @@ export class TheCrawlTalentSheet extends ItemSheet {
     // Governing attribute options
     data.attributeOptions = ["might", "agility", "endurance", "insight", "willpower", "charisma"];
 
-    // NEW: Talent subtype (spell vs special attack)
+    // Talent subtype (spell vs special attack)
     data.talentSubtypes = ["spell", "specialAttack"];
 
-    // Placeholder list for later dropdown use (optional; template may ignore for now)
+    // Placeholder list for later dropdown use
     data.weaponTypes = [
       "unarmed",
       "dagger",
@@ -41,7 +45,6 @@ export class TheCrawlTalentSheet extends ItemSheet {
     ];
 
     data.itemLabel = "Talent";
-
     return data;
   }
 }
