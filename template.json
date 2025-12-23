@@ -115,7 +115,8 @@
       "feature": {
         "key": "",
         "category": "feature",
-        "tier": 0
+        "tier": 0,
+        "description": ""
       },
       "skill": {
         "key": "",
@@ -128,9 +129,11 @@
           "current": 0,
           "target": 0,
           "locked": false,
-          "lastGain": 0
+          "lastGain": 0,
+          
         },
-        "modifiers": []
+        "modifiers": [],
+        "description": ""
       },
       "talent": {
         "key": "",
@@ -138,6 +141,7 @@
         "subtype": "spell",
         "governingAttribute": "might",
         "tier": 0,
+        "description": "",
         "action": {
           "type": "active",
           "cost": 0
@@ -173,6 +177,7 @@
         "category": "race",
         "traits": [],
         "bonuses": {},
+        "description": "",
         "grants": {
           "attributes": {},
           "talents": [],
@@ -185,6 +190,7 @@
         "quantity": 1,
         "slot": "",
         "stackable": false,
+        "description": "",
         "bonuses": {},
         "weapon": {
           "type": "",
