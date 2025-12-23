@@ -56,6 +56,46 @@ export class TheCrawlActor extends Actor {
     return weapons.some(w => String(w?.system?.weapon?.type ?? "").trim() === req);
   }
 
+  /**
+   * Validate whether this actor meets the requirements to use a given Talent.
+   * Non-blocking: returns ok + warnings. No enforcement or dice penalties yet.
+   *
+   * @param {Item} talent
+   * @returns {{ ok: boolean, warnings: string[] }}
+   */
+  validateTalent(talent) {
+    const warnings = [];
+
+    if (!talent || talent.type !== "talent") {
+      return { ok: false, warnings: ["Invalid talent item."] };
+    }
+
+    const sys = talent.system ?? {};
+    const subtype = String(sys.subtype ?? "").trim();
+
+    if (subtype === "spell") {
+      const schoolKey = String(sys?.requirements?.spellSchoolKey ?? "").trim();
+
+      if (!schoolKey) {
+        warnings.push("Spell is missing required spell school key (requirements.spellSchoolKey).");
+      } else if (!this.hasSpellSchool(schoolKey)) {
+        warnings.push(`Actor lacks required spell school skill: "${schoolKey}".`);
+      }
+    } else if (subtype === "specialAttack") {
+      const weaponType = String(sys?.requirements?.weaponType ?? "").trim();
+
+      if (!weaponType) {
+        warnings.push("Special attack is missing required weapon type (requirements.weaponType).");
+      } else if (!this.hasEquippedWeaponType(weaponType)) {
+        warnings.push(`Actor does not have an equipped weapon of type: "${weaponType}".`);
+      }
+    } else {
+      warnings.push(`Unknown talent subtype "${subtype}". Expected "spell" or "specialAttack".`);
+    }
+
+    return { ok: warnings.length === 0, warnings };
+  }
+
   prepareDerivedData() {
     super.prepareDerivedData();
 
@@ -101,5 +141,8 @@ export class TheCrawlActor extends Actor {
       .filter(Boolean);
 
     system.debug.equippedWeaponTypes = equippedWeaponTypes;
+
+    // Optional: clear lastTalentValidation (will be set by future UI/roll calls)
+    system.debug.lastTalentValidation = system.debug.lastTalentValidation ?? null;
   }
 }
