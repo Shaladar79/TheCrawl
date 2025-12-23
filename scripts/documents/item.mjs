@@ -41,28 +41,20 @@ function buildBaseKey({ type, name, system }) {
   const nameSlug = slugify(name) || type || "item";
 
   if (type === "skill") {
-    // Keep existing scheme:
-    // - spellSchool skills get a prefix
     const category = String(sys.category ?? "").trim();
     return (category === "spellSchool") ? `spellschool-${nameSlug}` : nameSlug;
   }
 
   if (type === "talent") {
-    // Use subtype prefix:
-    // talent-spell-fireball
-    // talent-specialattack-cleave
     const subtype = slugify(sys.subtype) || "";
     return subtype ? `talent-${subtype}-${nameSlug}` : `talent-${nameSlug}`;
   }
 
   if (type === "feature") {
-    // Features are always passive adjustments.
-    // Keep a single stable scheme:
-    // feature-darkvision
+    // Features are always passive adjustments; keep scheme simple.
     return `feature-${nameSlug}`;
   }
 
-  // No auto-keying for other item types yet
   return null;
 }
 
@@ -77,18 +69,20 @@ export class TheCrawlItem extends Item {
     const type = data?.type ?? this.type;
     if (!["skill", "talent", "feature"].includes(type)) return;
 
-    const sys = data?.system ?? {};
-    const currentKey = String(sys.key ?? "").trim();
+    const currentKey = String(foundry.utils.getProperty(data, "system.key") ?? "").trim();
     if (currentKey) return; // do not override existing keys
 
     const name = data?.name ?? this.name ?? "";
-    const base = buildBaseKey({ type, name, system: sys });
+    const base = buildBaseKey({ type, name, system: data?.system ?? {} });
     if (!base) return;
 
     const existing = await collectExistingKeys(this);
     const finalKey = uniqueKey(base, existing);
 
-    // Set key into pending creation data
-    this.updateSource({ system: { key: finalKey } });
+    // IMPORTANT: set on the CREATION DATA so it persists
+    foundry.utils.setProperty(data, "system.key", finalKey);
+
+    // Also set on the source for safety (doesn't hurt)
+    this.updateSource({ "system.key": finalKey });
   }
 }
