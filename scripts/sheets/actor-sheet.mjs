@@ -74,6 +74,75 @@ export class TheCrawlActorSheet extends ActorSheet {
     return data;
   }
 
+  /**
+   * Prompt for TN/context, then execute a skill roll.
+   */
+  async _promptSkillRollOptions(skillItemId) {
+    const item = this.actor.items.get(skillItemId);
+    const skillName = item?.name ?? "Skill";
+
+    // Default context: noncombat
+    const content = `
+      <form class="thecrawl-roll-dialog">
+        <div class="form-group">
+          <label>Target Number (TN)</label>
+          <input type="number" name="tn" placeholder="(optional)" />
+          <p class="notes">Leave blank to roll without a TN comparison.</p>
+        </div>
+
+        <div class="form-group">
+          <label>Context</label>
+          <select name="context">
+            <option value="noncombat" selected>Non-Combat</option>
+            <option value="combat">Combat</option>
+          </select>
+        </div>
+      </form>
+    `;
+
+    return new Promise((resolve) => {
+      new Dialog({
+        title: `Roll ${skillName}`,
+        content,
+        buttons: {
+          roll: {
+            icon: '<i class="fas fa-dice-d12"></i>',
+            label: "Roll",
+            callback: async (html) => {
+              const tnRaw = html.find('input[name="tn"]').val();
+
+              // Blank => no TN
+              const tn = (tnRaw === "" || tnRaw === null || tnRaw === undefined)
+                ? null
+                : Number(tnRaw);
+
+              // If they typed something non-numeric, treat as no TN (safe)
+              const tnFinal = Number.isFinite(tn) ? tn : null;
+
+              const context = String(html.find('select[name="context"]').val() ?? "").trim();
+
+              try {
+                await this.actor.rollSkill(skillItemId, { tn: tnFinal, context });
+              } catch (err) {
+                console.error("The Crawl | rollSkill failed", err);
+                ui.notifications?.error("Skill roll failed. See console for details.");
+              }
+
+              resolve(true);
+            }
+          },
+          cancel: {
+            icon: '<i class="fas fa-times"></i>',
+            label: "Cancel",
+            callback: () => resolve(false)
+          }
+        },
+        default: "roll",
+        close: () => resolve(false)
+      }).render(true);
+    });
+  }
+
   activateListeners(html) {
     super.activateListeners(html);
 
@@ -95,7 +164,7 @@ export class TheCrawlActorSheet extends ActorSheet {
       if (item) item.sheet.render(true);
     });
 
-    // Roll skill placeholder (wired to actor method)
+    // Roll skill (Dialog prompt → actor.rollSkill(itemId, { tn, context }))
     html.find("[data-roll-skill]").on("click", async (ev) => {
       ev.preventDefault();
       const li = ev.currentTarget.closest("[data-item-id]");
@@ -107,7 +176,7 @@ export class TheCrawlActorSheet extends ActorSheet {
         return;
       }
 
-      await this.actor.rollSkill(itemId);
+      await this._promptSkillRollOptions(itemId);
     });
   }
 }
