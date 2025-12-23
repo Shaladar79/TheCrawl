@@ -93,7 +93,7 @@ export class TheCrawlActor extends Actor {
    * 36-55  = 4 dice
    * 56-79  = 5 dice
    *
-   * NOTE: 80+ is handled via auto-successes (implemented in rollSkill).
+   * NOTE: 80+ handled via auto-successes (implemented in rollSkill).
    */
   _attributeToDice(attrValue) {
     const v = Number(attrValue ?? 0);
@@ -104,7 +104,6 @@ export class TheCrawlActor extends Actor {
     if (v >= 11 && v <= 20) return 2;
     if (v >= 5 && v <= 10) return 1;
 
-    // If below 5, still allow 0 dice (can be modified later by features, etc.)
     return 0;
   }
 
@@ -116,7 +115,7 @@ export class TheCrawlActor extends Actor {
    * 31-40  = 4 dice
    * 41-50  = 5 dice
    *
-   * NOTE: 51+ is handled via auto-successes (implemented in rollSkill).
+   * NOTE: 51+ handled via auto-successes (implemented in rollSkill).
    */
   _scoreToDice(score) {
     const v = Number(score ?? 0);
@@ -135,7 +134,7 @@ export class TheCrawlActor extends Actor {
    * - Attribute 80+ grants auto-successes (no extra dice beyond the 5-die cap)
    * - Skill score 51+ grants auto-successes (no extra dice beyond the 5-die cap)
    *
-   * Scaling (conservative, predictable):
+   * Conservative scaling:
    * - Attribute: +1 at 80, +1 per additional full +20 thereafter (100, 120, ...)
    * - Skill:     +1 at 51, +1 per additional full +20 thereafter (71, 91, ...)
    *
@@ -161,7 +160,7 @@ export class TheCrawlActor extends Actor {
    * 12    = +2 successes
    * 1     = -1 success
    *
-   * Floor (dice-only net) at -3.
+   * Floor dice-net at -3 (auto-successes are added after this floor).
    */
   _countSuccessesFromD12(results) {
     let successes = 0;
@@ -172,9 +171,7 @@ export class TheCrawlActor extends Actor {
       else if (r === 1) successes -= 1;
     }
 
-    // Floor at -3
     if (successes < -3) successes = -3;
-
     return successes;
   }
 
@@ -184,14 +181,23 @@ export class TheCrawlActor extends Actor {
    * - governingAttribute => Actor system.attributes[attribute].value
    * - Score             => skill.system.bonus.misc
    *
+   * Optional:
+   * - options.tn      => Target Number (compare net successes vs TN)
+   * - options.context => "combat" | "noncombat" (label only for now)
+   *
    * Posts a chat message with the roll breakdown.
    */
-  async rollSkill(itemId) {
+  async rollSkill(itemId, options = {}) {
     const skill = this.items.get(itemId);
     if (!skill || skill.type !== "skill") {
       ui.notifications?.warn("That is not a Skill item.");
       return null;
     }
+
+    const { tn = null, context = "" } = options ?? {};
+    const hasTN = Number.isFinite(Number(tn));
+    const tnValue = hasTN ? Number(tn) : null;
+    const ctx = String(context ?? "").trim(); // label only
 
     const skillSys = skill.system ?? {};
     const attrKey = String(skillSys.governingAttribute ?? "").trim();
@@ -219,12 +225,17 @@ export class TheCrawlActor extends Actor {
     const diceNet = this._countSuccessesFromD12(results);
     const netSuccesses = diceNet + auto.totalAuto;
 
+    // TN compare (optional)
+    const margin = hasTN ? (netSuccesses - tnValue) : null;
+    const outcome = hasTN ? (margin >= 0 ? "SUCCESS" : "FAIL") : null;
+
     const title = `${this.name} rolls ${skill.name}`;
     const breakdown = `
       <div style="margin-top:6px;">
         <div><strong>Attribute:</strong> ${attrKey || "(none)"} (${attrValue}) → ${attrDice}d</div>
         <div><strong>Score:</strong> ${score} → ${skillDice}d</div>
         <div><strong>Total Dice:</strong> ${totalDice}d12</div>
+        ${ctx ? `<div><strong>Context:</strong> ${ctx}</div>` : ``}
       </div>
     `;
 
@@ -244,6 +255,15 @@ export class TheCrawlActor extends Actor {
       `
       : ``;
 
+    const tnLine = hasTN
+      ? `
+        <div style="margin-top:6px;">
+          <div><strong>Target Number:</strong> ${tnValue}</div>
+          <div><strong>Outcome:</strong> ${outcome} <span style="opacity:0.85;">(Margin: ${margin})</span></div>
+        </div>
+      `
+      : ``;
+
     const scoring = `
       <div style="margin-top:6px;">
         <div><strong>Net Successes:</strong> ${netSuccesses}</div>
@@ -259,11 +279,11 @@ export class TheCrawlActor extends Actor {
         ${breakdown}
         ${resultsLine}
         ${autoLine}
+        ${tnLine}
         ${scoring}
       </div>
     `;
 
-    // Send message; also include the Roll so Foundry can show the roll tooltip properly
     await ChatMessage.create({
       speaker: ChatMessage.getSpeaker({ actor: this }),
       content,
@@ -289,10 +309,14 @@ export class TheCrawlActor extends Actor {
       },
       results,
       diceNet,
-      netSuccesses
+      netSuccesses,
+      tn: tnValue,
+      context: ctx || null,
+      margin,
+      outcome
     };
 
-    return { roll, results, diceNet, autoSuccesses: auto, netSuccesses };
+    return { roll, results, diceNet, autoSuccesses: auto, netSuccesses, tn: tnValue, margin, outcome, context: ctx };
   }
 
   prepareDerivedData() {
