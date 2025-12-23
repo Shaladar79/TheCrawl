@@ -10,7 +10,8 @@ function slugify(str) {
 }
 
 async function collectExistingKeys(item) {
-  // Try to gather keys from the owning actor (best scope) or from world items.
+  // Prefer keys on the owning actor (most relevant).
+  // If no parent (world item), fall back to world items.
   const keys = new Set();
 
   const add = (it) => {
@@ -35,30 +36,57 @@ function uniqueKey(base, existingKeys) {
   return `${base}-${n}`;
 }
 
+function buildBaseKey({ type, name, system }) {
+  const sys = system ?? {};
+  const nameSlug = slugify(name) || type || "item";
+
+  if (type === "skill") {
+    // Keep your existing scheme:
+    // - spellSchool skills get a prefix
+    const category = String(sys.category ?? "").trim();
+    return (category === "spellSchool") ? `spellschool-${nameSlug}` : nameSlug;
+  }
+
+  if (type === "talent") {
+    // Use subtype prefix:
+    // talent-spell-fireball
+    // talent-specialattack-cleave
+    const subtype = slugify(sys.subtype) || "";
+    return subtype ? `talent-${subtype}-${nameSlug}` : `talent-${nameSlug}`;
+  }
+
+  if (type === "feature") {
+    // Use category (or subtype if you later add it) as a prefix:
+    // feature-passive-darkvision
+    // feature-aura-intimidating-presence
+    const category = slugify(sys.category) || "";
+    const subtype = slugify(sys.subtype) || "";
+    const prefix = subtype || category;
+    return prefix ? `feature-${prefix}-${nameSlug}` : `feature-${nameSlug}`;
+  }
+
+  // No auto-keying for other item types yet
+  return null;
+}
+
 export class TheCrawlItem extends Item {
   /**
    * Auto-generate system.key on creation if missing.
-   * Applies to Skill items (and you can expand later).
+   * Applies to: skill, talent, feature.
    */
   async _preCreate(data, options, user) {
     await super._preCreate(data, options, user);
 
-    // Only auto-key on skill items for now
     const type = data?.type ?? this.type;
-    if (type !== "skill") return;
+    if (!["skill", "talent", "feature"].includes(type)) return;
 
     const sys = data?.system ?? {};
     const currentKey = String(sys.key ?? "").trim();
-    if (currentKey) return; // do not override
+    if (currentKey) return; // do not override existing keys
 
     const name = data?.name ?? this.name ?? "";
-    const category = String(sys.category ?? "").trim();
-
-    // Base key scheme:
-    // - If category is "spellSchool", prefix it (helps clarity for validation)
-    // - Otherwise just use the name slug.
-    const nameSlug = slugify(name) || "skill";
-    const base = (category === "spellSchool") ? `spellschool-${nameSlug}` : nameSlug;
+    const base = buildBaseKey({ type, name, system: sys });
+    if (!base) return;
 
     const existing = await collectExistingKeys(this);
     const finalKey = uniqueKey(base, existing);
