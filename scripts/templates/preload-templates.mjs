@@ -29,6 +29,7 @@ export async function preloadHandlebarsTemplates() {
     "systems/thecrawl/templates/items/parts/skill/costs.hbs",
     "systems/thecrawl/templates/items/parts/skill/scaling.hbs",
     "systems/thecrawl/templates/items/parts/skill/description.hbs",
+    "systems/thecrawl/templates/items/parts/skill/rules.hbs",
 
   // Equipment (Item type: equipment)
     "systems/thecrawl/templates/items/equipment-sheet.hbs",
