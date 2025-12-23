@@ -41,7 +41,7 @@ function buildBaseKey({ type, name, system }) {
   const nameSlug = slugify(name) || type || "item";
 
   if (type === "skill") {
-    // Keep your existing scheme:
+    // Keep existing scheme:
     // - spellSchool skills get a prefix
     const category = String(sys.category ?? "").trim();
     return (category === "spellSchool") ? `spellschool-${nameSlug}` : nameSlug;
@@ -56,13 +56,10 @@ function buildBaseKey({ type, name, system }) {
   }
 
   if (type === "feature") {
-    // Use category (or subtype if you later add it) as a prefix:
-    // feature-passive-darkvision
-    // feature-aura-intimidating-presence
-    const category = slugify(sys.category) || "";
-    const subtype = slugify(sys.subtype) || "";
-    const prefix = subtype || category;
-    return prefix ? `feature-${prefix}-${nameSlug}` : `feature-${nameSlug}`;
+    // Features are always passive adjustments.
+    // Keep a single stable scheme:
+    // feature-darkvision
+    return `feature-${nameSlug}`;
   }
 
   // No auto-keying for other item types yet
