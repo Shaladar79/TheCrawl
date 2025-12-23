@@ -1,0 +1,58 @@
+<div class="tab" data-group="primary" data-tab="abilities">
+  <h3 style="margin:10px 0;">Talents</h3>
+
+  {{#if talentsValidated.length}}
+    <div style="display:flex; flex-direction:column; gap:8px;">
+      {{#each talentsValidated as |t|}}
+        <div
+          data-item-id="{{t.id}}"
+          style="border:1px solid #333; border-radius:6px; padding:8px; background:#1b1b1b;"
+        >
+          <div style="display:flex; align-items:center; gap:10px;">
+            <img src="{{t.img}}" style="width:32px; height:32px; border:0; border-radius:4px;" />
+
+            <div style="flex:1;">
+              <div style="display:flex; align-items:center; justify-content:space-between; gap:10px;">
+                <strong>{{t.name}}</strong>
+
+                {{#if t.ok}}
+                  <span style="padding:2px 8px; border-radius:999px; border:1px solid #2a6; color:#bff0d0; background:#0f2a1a;">
+                    Usable
+                  </span>
+                {{else}}
+                  <span style="padding:2px 8px; border-radius:999px; border:1px solid #b33; color:#f2c8c8; background:#2a0f0f;">
+                    Not Usable
+                  </span>
+                {{/if}}
+              </div>
+
+              <div style="opacity:0.85; margin-top:2px;">
+                Type: {{t.subtype}}
+              </div>
+            </div>
+
+            <button type="button" data-open-item style="padding:4px 8px;">
+              Open
+            </button>
+          </div>
+
+          {{#if t.warnings.length}}
+            <ul style="margin:8px 0 0 18px; color:#f2c8c8;">
+              {{#each t.warnings as |w|}}
+                <li>{{w}}</li>
+              {{/each}}
+            </ul>
+          {{/if}}
+        </div>
+      {{/each}}
+    </div>
+  {{else}}
+    <p style="opacity:0.8;">No talents owned.</p>
+  {{/if}}
+
+  <hr style="margin:14px 0; opacity:0.35;" />
+
+  <p style="opacity:0.8; margin:0;">
+    (Skills, Equipment, Features lists can be added here next. For now, this tab focuses on Talent validation.)
+  </p>
+</div>
