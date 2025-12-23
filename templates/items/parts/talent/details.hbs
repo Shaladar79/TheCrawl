@@ -98,12 +98,18 @@
     <div style="display:grid; grid-template-columns: 1fr; gap:10px;">
       <label>
         Required Weapon Type
-        <input
-          type="text"
-          name="system.requirements.weaponType"
-          value="{{system.requirements.weaponType}}"
-          placeholder="e.g. sword, bow, unarmed"
-        />
+        <select name="system.requirements.weaponType">
+          <option value="" {{#if (eq system.requirements.weaponType "")}}selected{{/if}}>(none)</option>
+
+          {{#each weaponTypes as |wt|}}
+            <option
+              value="{{wt}}"
+              {{#if (eq ../system.requirements.weaponType wt)}}selected{{/if}}
+            >
+              {{wt}}
+            </option>
+          {{/each}}
+        </select>
       </label>
 
       <p style="opacity:0.8; margin:0;">
