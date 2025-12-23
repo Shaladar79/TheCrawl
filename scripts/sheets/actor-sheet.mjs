@@ -94,5 +94,20 @@ export class TheCrawlActorSheet extends ActorSheet {
       const item = this.actor.items.get(itemId);
       if (item) item.sheet.render(true);
     });
+
+    // Roll skill placeholder (wired to actor method)
+    html.find("[data-roll-skill]").on("click", async (ev) => {
+      ev.preventDefault();
+      const li = ev.currentTarget.closest("[data-item-id]");
+      const itemId = li?.dataset?.itemId;
+      if (!itemId) return;
+
+      if (typeof this.actor.rollSkill !== "function") {
+        ui.notifications?.warn("rollSkill is not implemented yet.");
+        return;
+      }
+
+      await this.actor.rollSkill(itemId);
+    });
   }
 }
