@@ -9,6 +9,24 @@ export class TheCrawlActor extends Actor {
   }
 
   /**
+   * Return owned Equipment items (Item type = "equipment")
+   */
+  getOwnedEquipment() {
+    return this.items?.filter(i => i.type === "equipment") ?? [];
+  }
+
+  /**
+   * Return equipped weapons (equipment items where category === "weapon" and equipped === true)
+   */
+  getEquippedWeapons() {
+    const eq = this.getOwnedEquipment();
+    return eq.filter(i => {
+      const sys = i?.system ?? {};
+      return sys.category === "weapon" && !!sys.equipped;
+    });
+  }
+
+  /**
    * Check whether the actor has a spell school skill by its system.key.
    * Used to validate spell Talents (talent.subtype === "spell").
    *
@@ -21,6 +39,21 @@ export class TheCrawlActor extends Actor {
 
     const skills = this.getOwnedSkills();
     return skills.some(s => String(s?.system?.key ?? "").trim() === key);
+  }
+
+  /**
+   * Check whether the actor has an equipped weapon matching the required weapon type.
+   * Used to validate special attack Talents (talent.subtype === "specialAttack").
+   *
+   * @param {string} weaponType
+   * @returns {boolean}
+   */
+  hasEquippedWeaponType(weaponType) {
+    const req = String(weaponType ?? "").trim();
+    if (!req) return false;
+
+    const weapons = this.getEquippedWeapons();
+    return weapons.some(w => String(w?.system?.weapon?.type ?? "").trim() === req);
   }
 
   prepareDerivedData() {
@@ -59,5 +92,14 @@ export class TheCrawlActor extends Actor {
       .filter(Boolean);
 
     system.debug.spellSchools = skillKeys;
+
+    // ---------------------------------------------
+    // Debug: list equipped weapon types known to this actor
+    // ---------------------------------------------
+    const equippedWeaponTypes = this.getEquippedWeapons()
+      .map(w => String(w?.system?.weapon?.type ?? "").trim())
+      .filter(Boolean);
+
+    system.debug.equippedWeaponTypes = equippedWeaponTypes;
   }
 }
