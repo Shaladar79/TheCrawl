@@ -8,6 +8,7 @@ export async function preloadHandlebarsTemplates() {
     "systems/thecrawl/templates/actor/parts/tab-core.hbs",
     "systems/thecrawl/templates/actor/parts/tab-combat.hbs",
     "systems/thecrawl/templates/actor/parts/tab-notes.hbs",
+    "systems/thecrawl/templates/actor/parts/tab-abilities.hbs",
 
     "systems/thecrawl/templates/actor/parts/core/progression.hbs",
     "systems/thecrawl/templates/actor/parts/core/identity-monster.hbs",
