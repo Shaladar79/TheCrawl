@@ -5,7 +5,11 @@ export class TheCrawlSkillSheet extends ItemSheet {
       classes: ["thecrawl", "sheet", "item", "skill"],
       width: 620,
       height: 720,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "details" }]
+      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "details" }],
+
+      // v13: ensure form changes actually submit to the document
+      submitOnChange: true,
+      submitOnClose: true
     });
   }
 
