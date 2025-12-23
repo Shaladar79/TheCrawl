@@ -50,8 +50,26 @@ export class TheCrawlActorSheet extends ActorSheet {
       };
     });
 
-    // Optional: stable ordering (name)
     data.talentsValidated.sort((a, b) => String(a.name).localeCompare(String(b.name)));
+
+    // ---------------------------------------------------
+    // Skills list (owned items, display-only)
+    // Attribute = system.governingAttribute
+    // Tier      = system.tier
+    // Score     = system.bonus.misc
+    // ---------------------------------------------------
+    const skills = this.actor.items?.filter(i => i.type === "skill") ?? [];
+
+    data.skillsList = skills.map(s => ({
+      id: s.id,
+      name: s.name,
+      img: s.img,
+      attribute: String(s?.system?.governingAttribute ?? "").trim(),
+      tier: Number(s?.system?.tier ?? 0),
+      score: Number(s?.system?.bonus?.misc ?? 0)
+    }));
+
+    data.skillsList.sort((a, b) => String(a.name).localeCompare(String(b.name)));
 
     return data;
   }
@@ -66,7 +84,7 @@ export class TheCrawlActorSheet extends ActorSheet {
       this.render(false);
     });
 
-    // Open owned item sheets from our list
+    // Open owned item sheets from our lists
     html.find("[data-open-item]").on("click", (ev) => {
       ev.preventDefault();
       const li = ev.currentTarget.closest("[data-item-id]");
