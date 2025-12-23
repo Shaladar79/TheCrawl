@@ -66,6 +66,12 @@
   </div>
 
   {{#if (eq system.category "weapon")}}
+    {{#unless system.weapon.type}}
+      <p style="margin:10px 0 0; padding:8px; border:1px solid #b33; background:#2a0f0f; color:#f2c8c8; border-radius:4px;">
+        Warning: This item is a weapon, but it has no Weapon Type set. Special Attacks that require a weapon type may not validate correctly.
+      </p>
+    {{/unless}}
+
     <p style="opacity:0.8; margin:10px 0 0;">
       Weapon Type is used to validate Special Attacks (Talents) that require a specific weapon type.
     </p>
